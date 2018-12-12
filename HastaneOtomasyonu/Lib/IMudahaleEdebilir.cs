@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace HastaneOtomasyonu.Lib
 {
-    public interface IMudehaleEdebilir
+    public interface IMudahaleEdebilir
     {
-        void MudehaleEt();
+        void MudahaleEt(Doktor doktor, DateTime mudahaleSaati);
     }
 }

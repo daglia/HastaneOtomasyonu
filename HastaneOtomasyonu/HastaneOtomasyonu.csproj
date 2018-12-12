@@ -58,7 +58,7 @@
     <Compile Include="Lib\Hasta.cs" />
     <Compile Include="Lib\Hemsire.cs" />
     <Compile Include="Lib\IMaasAlabilir.cs" />
-    <Compile Include="Lib\IMudehaleEdebilir.cs" />
+    <Compile Include="Lib\IMudahaleEdebilir.cs" />
     <Compile Include="Lib\Kisi.cs" />
     <Compile Include="Lib\Personel.cs" />
     <Compile Include="Program.cs" />

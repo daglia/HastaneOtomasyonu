@@ -8,8 +8,8 @@ namespace HastaneOtomasyonu.Lib
 {
     public abstract class Calisan : Kisi, IMaasAlabilir
     {
-        public decimal SaatlikUcret { set => throw new NotImplementedException(); }
-
-        public decimal Tutar => throw new NotImplementedException();
+        public decimal _saatlikUcret;
+        public decimal Tutar { get => _saatlikUcret * 8 * 20; }
+        public decimal SaatlikUcret { set => _saatlikUcret = value; }
     }
 }
