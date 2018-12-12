@@ -31,9 +31,9 @@
             this.msIslemler = new System.Windows.Forms.MenuStrip();
             this.dosyaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.içeriAktarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dışarıAktarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xMLOlarakAktarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.jSONOlarakAktarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dışarıAktarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xMLOlarakAktarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.jSONOlarakAktarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
@@ -41,6 +41,7 @@
             this.btnSil = new System.Windows.Forms.Button();
             this.btnEkle = new System.Windows.Forms.Button();
             this.gbMuayene = new System.Windows.Forms.GroupBox();
+            this.dtpMuayene = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.cbHemsireSec = new System.Windows.Forms.ComboBox();
             this.cbDoktorSec = new System.Windows.Forms.ComboBox();
@@ -56,31 +57,35 @@
             this.txtTCKN = new System.Windows.Forms.TextBox();
             this.txtSoyad = new System.Windows.Forms.TextBox();
             this.txtAd = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblKayitli = new System.Windows.Forms.Label();
             this.lbKisiler = new System.Windows.Forms.ListBox();
-            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gbEkBilgiler = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cbGorev = new System.Windows.Forms.ComboBox();
+            this.cbHemsireDoktor = new System.Windows.Forms.ComboBox();
+            this.cbBrans = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.txtSaatlikUcret = new System.Windows.Forms.TextBox();
+            this.txtAra = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.gbMuayeneBilgileri = new System.Windows.Forms.GroupBox();
+            this.lblMuayeneBilgileri = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.msIslemler.SuspendLayout();
             this.gbMuayene.SuspendLayout();
             this.gbKisiBilgileri.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.gbEkBilgiler.SuspendLayout();
+            this.gbMuayeneBilgileri.SuspendLayout();
             this.SuspendLayout();
             // 
             // msIslemler
             // 
             this.msIslemler.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dosyaToolStripMenuItem,
-            this.toolStripComboBox1,
-            this.toolStripTextBox1});
+            this.toolStripComboBox1});
             this.msIslemler.Location = new System.Drawing.Point(0, 0);
             this.msIslemler.Name = "msIslemler";
             this.msIslemler.Size = new System.Drawing.Size(784, 27);
@@ -102,8 +107,20 @@
             this.xMLOlarakAktarToolStripMenuItem,
             this.jSONOlarakAktarToolStripMenuItem});
             this.içeriAktarToolStripMenuItem.Name = "içeriAktarToolStripMenuItem";
-            this.içeriAktarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.içeriAktarToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.içeriAktarToolStripMenuItem.Text = "İçeri Aktar";
+            // 
+            // xMLOlarakAktarToolStripMenuItem
+            // 
+            this.xMLOlarakAktarToolStripMenuItem.Name = "xMLOlarakAktarToolStripMenuItem";
+            this.xMLOlarakAktarToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.xMLOlarakAktarToolStripMenuItem.Text = "XML olarak aktar";
+            // 
+            // jSONOlarakAktarToolStripMenuItem
+            // 
+            this.jSONOlarakAktarToolStripMenuItem.Name = "jSONOlarakAktarToolStripMenuItem";
+            this.jSONOlarakAktarToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.jSONOlarakAktarToolStripMenuItem.Text = "JSON olarak aktar";
             // 
             // dışarıAktarToolStripMenuItem
             // 
@@ -111,82 +128,79 @@
             this.xMLOlarakAktarToolStripMenuItem1,
             this.jSONOlarakAktarToolStripMenuItem1});
             this.dışarıAktarToolStripMenuItem.Name = "dışarıAktarToolStripMenuItem";
-            this.dışarıAktarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dışarıAktarToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.dışarıAktarToolStripMenuItem.Text = "Dışarı Aktar";
-            // 
-            // xMLOlarakAktarToolStripMenuItem
-            // 
-            this.xMLOlarakAktarToolStripMenuItem.Name = "xMLOlarakAktarToolStripMenuItem";
-            this.xMLOlarakAktarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.xMLOlarakAktarToolStripMenuItem.Text = "XML olarak aktar";
-            // 
-            // jSONOlarakAktarToolStripMenuItem
-            // 
-            this.jSONOlarakAktarToolStripMenuItem.Name = "jSONOlarakAktarToolStripMenuItem";
-            this.jSONOlarakAktarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.jSONOlarakAktarToolStripMenuItem.Text = "JSON olarak aktar";
             // 
             // xMLOlarakAktarToolStripMenuItem1
             // 
             this.xMLOlarakAktarToolStripMenuItem1.Name = "xMLOlarakAktarToolStripMenuItem1";
-            this.xMLOlarakAktarToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.xMLOlarakAktarToolStripMenuItem1.Size = new System.Drawing.Size(166, 22);
             this.xMLOlarakAktarToolStripMenuItem1.Text = "XML olarak aktar";
             // 
             // jSONOlarakAktarToolStripMenuItem1
             // 
             this.jSONOlarakAktarToolStripMenuItem1.Name = "jSONOlarakAktarToolStripMenuItem1";
-            this.jSONOlarakAktarToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.jSONOlarakAktarToolStripMenuItem1.Size = new System.Drawing.Size(166, 22);
             this.jSONOlarakAktarToolStripMenuItem1.Text = "JSON olarak aktar";
             // 
             // toolStripComboBox1
             // 
+            this.toolStripComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.toolStripComboBox1.Items.AddRange(new object[] {
             "Hasta İşlemleri",
             "Çalışan İşlemleri"});
             this.toolStripComboBox1.Name = "toolStripComboBox1";
             this.toolStripComboBox1.Size = new System.Drawing.Size(121, 23);
+            this.toolStripComboBox1.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBox1_SelectedIndexChanged);
             this.toolStripComboBox1.Click += new System.EventHandler(this.toolStripComboBox1_Click);
             // 
             // btnHastaGuncelle
             // 
-            this.btnHastaGuncelle.Location = new System.Drawing.Point(232, 410);
+            this.btnHastaGuncelle.Location = new System.Drawing.Point(231, 482);
             this.btnHastaGuncelle.Name = "btnHastaGuncelle";
-            this.btnHastaGuncelle.Size = new System.Drawing.Size(177, 51);
+            this.btnHastaGuncelle.Size = new System.Drawing.Size(79, 34);
             this.btnHastaGuncelle.TabIndex = 13;
             this.btnHastaGuncelle.Text = "Güncelle";
             this.btnHastaGuncelle.UseVisualStyleBackColor = true;
             // 
             // btnSil
             // 
-            this.btnSil.Location = new System.Drawing.Point(232, 467);
+            this.btnSil.Location = new System.Drawing.Point(329, 482);
             this.btnSil.Name = "btnSil";
-            this.btnSil.Size = new System.Drawing.Size(177, 51);
+            this.btnSil.Size = new System.Drawing.Size(79, 34);
             this.btnSil.TabIndex = 12;
             this.btnSil.Text = "Sil";
             this.btnSil.UseVisualStyleBackColor = true;
             // 
             // btnEkle
             // 
-            this.btnEkle.Location = new System.Drawing.Point(231, 353);
+            this.btnEkle.Location = new System.Drawing.Point(231, 444);
             this.btnEkle.Name = "btnEkle";
-            this.btnEkle.Size = new System.Drawing.Size(177, 51);
+            this.btnEkle.Size = new System.Drawing.Size(177, 32);
             this.btnEkle.TabIndex = 11;
             this.btnEkle.Text = "Ekle";
             this.btnEkle.UseVisualStyleBackColor = true;
             // 
             // gbMuayene
             // 
-            this.gbMuayene.Controls.Add(this.dateTimePicker1);
+            this.gbMuayene.Controls.Add(this.dtpMuayene);
             this.gbMuayene.Controls.Add(this.label7);
             this.gbMuayene.Controls.Add(this.cbHemsireSec);
             this.gbMuayene.Controls.Add(this.cbDoktorSec);
             this.gbMuayene.Controls.Add(this.cbServisSec);
             this.gbMuayene.Location = new System.Drawing.Point(415, 59);
             this.gbMuayene.Name = "gbMuayene";
-            this.gbMuayene.Size = new System.Drawing.Size(357, 459);
+            this.gbMuayene.Size = new System.Drawing.Size(357, 288);
             this.gbMuayene.TabIndex = 10;
             this.gbMuayene.TabStop = false;
             this.gbMuayene.Text = "Muayene İşlemleri";
+            // 
+            // dtpMuayene
+            // 
+            this.dtpMuayene.Location = new System.Drawing.Point(6, 97);
+            this.dtpMuayene.Name = "dtpMuayene";
+            this.dtpMuayene.Size = new System.Drawing.Size(345, 20);
+            this.dtpMuayene.TabIndex = 4;
             // 
             // label7
             // 
@@ -323,51 +337,78 @@
             this.txtAd.Size = new System.Drawing.Size(114, 20);
             this.txtAd.TabIndex = 0;
             // 
-            // label1
+            // lblKayitli
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 43);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 13);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Kayıtlı Hastalar";
+            this.lblKayitli.AutoSize = true;
+            this.lblKayitli.Location = new System.Drawing.Point(12, 119);
+            this.lblKayitli.Name = "lblKayitli";
+            this.lblKayitli.Size = new System.Drawing.Size(76, 13);
+            this.lblKayitli.TabIndex = 8;
+            this.lblKayitli.Text = "Kayıtlı Hastalar";
             // 
             // lbKisiler
             // 
             this.lbKisiler.FormattingEnabled = true;
-            this.lbKisiler.Location = new System.Drawing.Point(12, 59);
+            this.lbKisiler.Location = new System.Drawing.Point(12, 135);
             this.lbKisiler.Name = "lbKisiler";
-            this.lbKisiler.Size = new System.Drawing.Size(213, 459);
+            this.lbKisiler.Size = new System.Drawing.Size(213, 381);
             this.lbKisiler.TabIndex = 7;
             // 
-            // toolStripTextBox1
+            // gbEkBilgiler
             // 
-            this.toolStripTextBox1.Name = "toolStripTextBox1";
-            this.toolStripTextBox1.Size = new System.Drawing.Size(100, 23);
+            this.gbEkBilgiler.Controls.Add(this.label1);
+            this.gbEkBilgiler.Controls.Add(this.textBox1);
+            this.gbEkBilgiler.Controls.Add(this.label8);
+            this.gbEkBilgiler.Controls.Add(this.cbGorev);
+            this.gbEkBilgiler.Controls.Add(this.cbHemsireDoktor);
+            this.gbEkBilgiler.Controls.Add(this.cbBrans);
+            this.gbEkBilgiler.Controls.Add(this.label10);
+            this.gbEkBilgiler.Controls.Add(this.label11);
+            this.gbEkBilgiler.Controls.Add(this.label12);
+            this.gbEkBilgiler.Controls.Add(this.txtSaatlikUcret);
+            this.gbEkBilgiler.Location = new System.Drawing.Point(231, 226);
+            this.gbEkBilgiler.Name = "gbEkBilgiler";
+            this.gbEkBilgiler.Size = new System.Drawing.Size(178, 160);
+            this.gbEkBilgiler.TabIndex = 10;
+            this.gbEkBilgiler.TabStop = false;
+            this.gbEkBilgiler.Text = "Ek Bilgiler";
             // 
-            // dateTimePicker1
+            // label8
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(6, 97);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(345, 20);
-            this.dateTimePicker1.TabIndex = 4;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(16, 18);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(36, 13);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "Görev";
             // 
-            // groupBox1
+            // cbGorev
             // 
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.comboBox3);
-            this.groupBox1.Controls.Add(this.comboBox2);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Location = new System.Drawing.Point(231, 226);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(178, 121);
-            this.groupBox1.TabIndex = 10;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Ek Bilgiler";
+            this.cbGorev.FormattingEnabled = true;
+            this.cbGorev.Items.AddRange(new object[] {
+            "Doktor",
+            "Hemşire",
+            "Personel"});
+            this.cbGorev.Location = new System.Drawing.Point(58, 15);
+            this.cbGorev.Name = "cbGorev";
+            this.cbGorev.Size = new System.Drawing.Size(114, 21);
+            this.cbGorev.TabIndex = 10;
+            // 
+            // cbHemsireDoktor
+            // 
+            this.cbHemsireDoktor.FormattingEnabled = true;
+            this.cbHemsireDoktor.Location = new System.Drawing.Point(58, 69);
+            this.cbHemsireDoktor.Name = "cbHemsireDoktor";
+            this.cbHemsireDoktor.Size = new System.Drawing.Size(114, 21);
+            this.cbHemsireDoktor.TabIndex = 9;
+            // 
+            // cbBrans
+            // 
+            this.cbBrans.FormattingEnabled = true;
+            this.cbBrans.Location = new System.Drawing.Point(58, 42);
+            this.cbBrans.Name = "cbBrans";
+            this.cbBrans.Size = new System.Drawing.Size(114, 21);
+            this.cbBrans.TabIndex = 8;
             // 
             // label10
             // 
@@ -381,11 +422,11 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(19, 99);
+            this.label11.Location = new System.Drawing.Point(6, 99);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(33, 13);
+            this.label11.Size = new System.Drawing.Size(46, 13);
             this.label11.TabIndex = 6;
-            this.label11.Text = "Maaş";
+            this.label11.Text = "S. Ücret";
             // 
             // label12
             // 
@@ -396,75 +437,97 @@
             this.label12.TabIndex = 5;
             this.label12.Text = "Branş";
             // 
-            // textBox4
+            // txtSaatlikUcret
             // 
-            this.textBox4.Location = new System.Drawing.Point(58, 96);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(114, 20);
-            this.textBox4.TabIndex = 1;
+            this.txtSaatlikUcret.Location = new System.Drawing.Point(58, 96);
+            this.txtSaatlikUcret.Name = "txtSaatlikUcret";
+            this.txtSaatlikUcret.Size = new System.Drawing.Size(114, 20);
+            this.txtSaatlikUcret.TabIndex = 1;
             // 
-            // comboBox1
+            // txtAra
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(58, 42);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(114, 21);
-            this.comboBox1.TabIndex = 8;
+            this.txtAra.Location = new System.Drawing.Point(15, 78);
+            this.txtAra.Name = "txtAra";
+            this.txtAra.Size = new System.Drawing.Size(210, 20);
+            this.txtAra.TabIndex = 10;
+            this.txtAra.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtAra_KeyUp);
             // 
-            // comboBox2
+            // label9
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(58, 69);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(114, 21);
-            this.comboBox2.TabIndex = 9;
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(12, 59);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(37, 13);
+            this.label9.TabIndex = 14;
+            this.label9.Text = "Arama";
             // 
-            // comboBox3
+            // gbMuayeneBilgileri
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
-            "Doktor",
-            "Hemşire",
-            "Personel"});
-            this.comboBox3.Location = new System.Drawing.Point(58, 15);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(114, 21);
-            this.comboBox3.TabIndex = 10;
+            this.gbMuayeneBilgileri.Controls.Add(this.lblMuayeneBilgileri);
+            this.gbMuayeneBilgileri.Location = new System.Drawing.Point(415, 353);
+            this.gbMuayeneBilgileri.Name = "gbMuayeneBilgileri";
+            this.gbMuayeneBilgileri.Size = new System.Drawing.Size(351, 165);
+            this.gbMuayeneBilgileri.TabIndex = 12;
+            this.gbMuayeneBilgileri.TabStop = false;
+            this.gbMuayeneBilgileri.Text = "Muayene Bilgileri";
             // 
-            // label8
+            // lblMuayeneBilgileri
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(16, 18);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(36, 13);
-            this.label8.TabIndex = 11;
-            this.label8.Text = "Görev";
+            this.lblMuayeneBilgileri.AutoSize = true;
+            this.lblMuayeneBilgileri.Location = new System.Drawing.Point(11, 20);
+            this.lblMuayeneBilgileri.Name = "lblMuayeneBilgileri";
+            this.lblMuayeneBilgileri.Size = new System.Drawing.Size(124, 13);
+            this.lblMuayeneBilgileri.TabIndex = 0;
+            this.lblMuayeneBilgileri.Text = "Henüz randevu alınmadı.";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(58, 122);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(114, 20);
+            this.textBox1.TabIndex = 12;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(19, 125);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(33, 13);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Maaş";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.gbMuayeneBilgileri);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.txtAra);
+            this.Controls.Add(this.gbEkBilgiler);
             this.Controls.Add(this.btnHastaGuncelle);
             this.Controls.Add(this.btnSil);
             this.Controls.Add(this.btnEkle);
             this.Controls.Add(this.gbMuayene);
             this.Controls.Add(this.gbKisiBilgileri);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblKayitli);
             this.Controls.Add(this.lbKisiler);
             this.Controls.Add(this.msIslemler);
             this.MainMenuStrip = this.msIslemler;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.msIslemler.ResumeLayout(false);
             this.msIslemler.PerformLayout();
             this.gbMuayene.ResumeLayout(false);
             this.gbMuayene.PerformLayout();
             this.gbKisiBilgileri.ResumeLayout(false);
             this.gbKisiBilgileri.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gbEkBilgiler.ResumeLayout(false);
+            this.gbEkBilgiler.PerformLayout();
+            this.gbMuayeneBilgileri.ResumeLayout(false);
+            this.gbMuayeneBilgileri.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -480,7 +543,6 @@
         private System.Windows.Forms.ToolStripMenuItem xMLOlarakAktarToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem jSONOlarakAktarToolStripMenuItem1;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
-        private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
         private System.Windows.Forms.Button btnHastaGuncelle;
         private System.Windows.Forms.Button btnSil;
         private System.Windows.Forms.Button btnEkle;
@@ -500,18 +562,24 @@
         private System.Windows.Forms.TextBox txtTCKN;
         private System.Windows.Forms.TextBox txtSoyad;
         private System.Windows.Forms.TextBox txtAd;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblKayitli;
         private System.Windows.Forms.ListBox lbKisiler;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DateTimePicker dtpMuayene;
+        private System.Windows.Forms.GroupBox gbEkBilgiler;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox txtSaatlikUcret;
+        private System.Windows.Forms.ComboBox cbHemsireDoktor;
+        private System.Windows.Forms.ComboBox cbBrans;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox cbGorev;
+        private System.Windows.Forms.TextBox txtAra;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.GroupBox gbMuayeneBilgileri;
+        private System.Windows.Forms.Label lblMuayeneBilgileri;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label1;
     }
 }
 
