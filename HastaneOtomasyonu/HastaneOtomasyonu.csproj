@@ -51,6 +51,10 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lib\Branslar.cs" />
+    <Compile Include="Lib\Gorevler.cs" />
+    <Compile Include="Lib\IMaasAlabilir.cs" />
+    <Compile Include="Lib\IMudehaleEdebilir.cs" />
     <Compile Include="Lib\Kisi.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
