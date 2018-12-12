@@ -83,6 +83,15 @@ namespace HastaneOtomasyonu
             }
         }
 
+        public Kisi()
+        {
+        }
+
+        public Kisi(string ad)
+        {
+            this._ad = ad;
+        }
+
         private void NameValid(string value, string propertyName)
         {
             foreach (char harf in propertyName)
