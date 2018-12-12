@@ -8,5 +8,8 @@ namespace HastaneOtomasyonu.Lib
 {
     public class Hasta : Kisi
     {
+        public Hasta(string ad, string soyad) : base(ad, soyad)
+        {
+        }
     }
 }

@@ -9,20 +9,18 @@ namespace HastaneOtomasyonu.Lib
     public class Doktor : Calisan, IMudahaleEdebilir
     {
         public Branslar DBrans { get; set; }
-       // private _brans;
+        public List<Hemsire> Hemsireler { get; set; } = new List<Hemsire>();
 
-        //public Doktor()
-        //{
-        //}
-
-        public Doktor(string ad,string soyad,Branslar dBrans) : base(ad,soyad)
+        public Doktor(string ad, string soyad, Branslar dBrans) : base(ad, soyad)
         {
             this.DBrans = dBrans;
         }
 
         public void MudahaleEt(Doktor doktor, DateTime mudahaleSaati)
         {
-            throw new NotImplementedException();
+            Hemsire hemsire = new Hemsire();
+            hemsire.hBrans = doktor.DBrans.ToString();
+            Hemsireler.Add(hemsire);
         }
 
         public override string ToString()

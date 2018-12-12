@@ -8,8 +8,10 @@ namespace HastaneOtomasyonu.Lib
 {
     public class Personel : Calisan
     {
-        public Personel(string ad, string soyad) : base(ad, soyad)
+        public Gorevler CGorev { get; set; }
+        public Personel(string ad, string soyad, Gorevler cGorev) : base(ad, soyad)
         {
+            this.CGorev = cGorev;
         }
     }
 }
