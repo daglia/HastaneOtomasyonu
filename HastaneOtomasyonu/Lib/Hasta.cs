@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace HastaneOtomasyonu.Lib
 {
-    public interface IMudehaleEdebilir
+    public class Hasta : Kisi
     {
-        void MudehaleEt();
     }
 }
