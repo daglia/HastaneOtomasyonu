@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace HastaneOtomasyonu.Lib
 {
-    public class Hemsire : Calisan, IMudehaleEdebilir
+    public class Hemsire : Calisan, IMudahaleEdebilir
     {
-        public string MudehaleEt { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public void MudahaleEt(Doktor doktor, DateTime mudahaleSaati)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

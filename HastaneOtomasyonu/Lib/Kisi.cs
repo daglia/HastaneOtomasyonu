@@ -87,9 +87,10 @@ namespace HastaneOtomasyonu
         {
         }
 
-        public Kisi(string ad)
+        public Kisi(string ad, string soyad)
         {
             this._ad = ad;
+            this._soyad = soyad;
         }
 
         private void NameValid(string value, string propertyName)
