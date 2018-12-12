@@ -8,5 +8,8 @@ namespace HastaneOtomasyonu.Lib
 {
     public class Personel : Calisan
     {
+        public Personel(string ad, string soyad) : base(ad, soyad)
+        {
+        }
     }
 }
