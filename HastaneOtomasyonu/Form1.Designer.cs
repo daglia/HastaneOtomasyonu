@@ -58,8 +58,10 @@
             this.txtSoyad = new System.Windows.Forms.TextBox();
             this.txtAd = new System.Windows.Forms.TextBox();
             this.lblKayitli = new System.Windows.Forms.Label();
-            this.lbKisiler = new System.Windows.Forms.ListBox();
+            this.lstKisiler = new System.Windows.Forms.ListBox();
             this.gbEkBilgiler = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.cbGorev = new System.Windows.Forms.ComboBox();
             this.cbHemsireDoktor = new System.Windows.Forms.ComboBox();
@@ -69,11 +71,11 @@
             this.label12 = new System.Windows.Forms.Label();
             this.txtSaatlikUcret = new System.Windows.Forms.TextBox();
             this.txtAra = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.lblAra = new System.Windows.Forms.Label();
             this.gbMuayeneBilgileri = new System.Windows.Forms.GroupBox();
             this.lblMuayeneBilgileri = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.dosyaKaydet = new System.Windows.Forms.SaveFileDialog();
+            this.dosyaAc = new System.Windows.Forms.OpenFileDialog();
             this.msIslemler.SuspendLayout();
             this.gbMuayene.SuspendLayout();
             this.gbKisiBilgileri.SuspendLayout();
@@ -107,20 +109,22 @@
             this.xMLOlarakAktarToolStripMenuItem,
             this.jSONOlarakAktarToolStripMenuItem});
             this.içeriAktarToolStripMenuItem.Name = "içeriAktarToolStripMenuItem";
-            this.içeriAktarToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.içeriAktarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.içeriAktarToolStripMenuItem.Text = "İçeri Aktar";
             // 
             // xMLOlarakAktarToolStripMenuItem
             // 
             this.xMLOlarakAktarToolStripMenuItem.Name = "xMLOlarakAktarToolStripMenuItem";
-            this.xMLOlarakAktarToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.xMLOlarakAktarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.xMLOlarakAktarToolStripMenuItem.Text = "XML olarak aktar";
+            this.xMLOlarakAktarToolStripMenuItem.Click += new System.EventHandler(this.xMLOlarakAktarToolStripMenuItem_Click);
             // 
             // jSONOlarakAktarToolStripMenuItem
             // 
             this.jSONOlarakAktarToolStripMenuItem.Name = "jSONOlarakAktarToolStripMenuItem";
-            this.jSONOlarakAktarToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.jSONOlarakAktarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.jSONOlarakAktarToolStripMenuItem.Text = "JSON olarak aktar";
+            this.jSONOlarakAktarToolStripMenuItem.Click += new System.EventHandler(this.jSONOlarakAktarToolStripMenuItem_Click);
             // 
             // dışarıAktarToolStripMenuItem
             // 
@@ -128,7 +132,7 @@
             this.xMLOlarakAktarToolStripMenuItem1,
             this.jSONOlarakAktarToolStripMenuItem1});
             this.dışarıAktarToolStripMenuItem.Name = "dışarıAktarToolStripMenuItem";
-            this.dışarıAktarToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.dışarıAktarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.dışarıAktarToolStripMenuItem.Text = "Dışarı Aktar";
             // 
             // xMLOlarakAktarToolStripMenuItem1
@@ -136,12 +140,14 @@
             this.xMLOlarakAktarToolStripMenuItem1.Name = "xMLOlarakAktarToolStripMenuItem1";
             this.xMLOlarakAktarToolStripMenuItem1.Size = new System.Drawing.Size(166, 22);
             this.xMLOlarakAktarToolStripMenuItem1.Text = "XML olarak aktar";
+            this.xMLOlarakAktarToolStripMenuItem1.Click += new System.EventHandler(this.xMLOlarakAktarToolStripMenuItem1_Click);
             // 
             // jSONOlarakAktarToolStripMenuItem1
             // 
             this.jSONOlarakAktarToolStripMenuItem1.Name = "jSONOlarakAktarToolStripMenuItem1";
             this.jSONOlarakAktarToolStripMenuItem1.Size = new System.Drawing.Size(166, 22);
             this.jSONOlarakAktarToolStripMenuItem1.Text = "JSON olarak aktar";
+            this.jSONOlarakAktarToolStripMenuItem1.Click += new System.EventHandler(this.jSONOlarakAktarToolStripMenuItem1_Click);
             // 
             // toolStripComboBox1
             // 
@@ -162,6 +168,7 @@
             this.btnHastaGuncelle.TabIndex = 13;
             this.btnHastaGuncelle.Text = "Güncelle";
             this.btnHastaGuncelle.UseVisualStyleBackColor = true;
+            this.btnHastaGuncelle.Click += new System.EventHandler(this.btnHastaGuncelle_Click);
             // 
             // btnSil
             // 
@@ -171,6 +178,7 @@
             this.btnSil.TabIndex = 12;
             this.btnSil.Text = "Sil";
             this.btnSil.UseVisualStyleBackColor = true;
+            this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
             // 
             // btnEkle
             // 
@@ -180,6 +188,7 @@
             this.btnEkle.TabIndex = 11;
             this.btnEkle.Text = "Ekle";
             this.btnEkle.UseVisualStyleBackColor = true;
+            this.btnEkle.Click += new System.EventHandler(this.btnEkle_Click);
             // 
             // gbMuayene
             // 
@@ -198,6 +207,7 @@
             // dtpMuayene
             // 
             this.dtpMuayene.Location = new System.Drawing.Point(6, 97);
+            this.dtpMuayene.MinDate = new System.DateTime(2018, 12, 12, 0, 0, 0, 0);
             this.dtpMuayene.Name = "dtpMuayene";
             this.dtpMuayene.Size = new System.Drawing.Size(345, 20);
             this.dtpMuayene.TabIndex = 4;
@@ -346,13 +356,13 @@
             this.lblKayitli.TabIndex = 8;
             this.lblKayitli.Text = "Kayıtlı Hastalar";
             // 
-            // lbKisiler
+            // lstKisiler
             // 
-            this.lbKisiler.FormattingEnabled = true;
-            this.lbKisiler.Location = new System.Drawing.Point(12, 135);
-            this.lbKisiler.Name = "lbKisiler";
-            this.lbKisiler.Size = new System.Drawing.Size(213, 381);
-            this.lbKisiler.TabIndex = 7;
+            this.lstKisiler.FormattingEnabled = true;
+            this.lstKisiler.Location = new System.Drawing.Point(12, 135);
+            this.lstKisiler.Name = "lstKisiler";
+            this.lstKisiler.Size = new System.Drawing.Size(213, 381);
+            this.lstKisiler.TabIndex = 7;
             // 
             // gbEkBilgiler
             // 
@@ -372,6 +382,23 @@
             this.gbEkBilgiler.TabIndex = 10;
             this.gbEkBilgiler.TabStop = false;
             this.gbEkBilgiler.Text = "Ek Bilgiler";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(19, 125);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(33, 13);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Maaş";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(58, 122);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(114, 20);
+            this.textBox1.TabIndex = 12;
             // 
             // label8
             // 
@@ -452,14 +479,14 @@
             this.txtAra.TabIndex = 10;
             this.txtAra.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtAra_KeyUp);
             // 
-            // label9
+            // lblAra
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(12, 59);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(37, 13);
-            this.label9.TabIndex = 14;
-            this.label9.Text = "Arama";
+            this.lblAra.AutoSize = true;
+            this.lblAra.Location = new System.Drawing.Point(12, 59);
+            this.lblAra.Name = "lblAra";
+            this.lblAra.Size = new System.Drawing.Size(37, 13);
+            this.lblAra.TabIndex = 14;
+            this.lblAra.Text = "Arama";
             // 
             // gbMuayeneBilgileri
             // 
@@ -480,22 +507,9 @@
             this.lblMuayeneBilgileri.TabIndex = 0;
             this.lblMuayeneBilgileri.Text = "Henüz randevu alınmadı.";
             // 
-            // textBox1
+            // dosyaAc
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(58, 122);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(114, 20);
-            this.textBox1.TabIndex = 12;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 125);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(33, 13);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "Maaş";
+            this.dosyaAc.FileName = "openFileDialog1";
             // 
             // Form1
             // 
@@ -503,7 +517,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.gbMuayeneBilgileri);
-            this.Controls.Add(this.label9);
+            this.Controls.Add(this.lblAra);
             this.Controls.Add(this.txtAra);
             this.Controls.Add(this.gbEkBilgiler);
             this.Controls.Add(this.btnHastaGuncelle);
@@ -512,7 +526,7 @@
             this.Controls.Add(this.gbMuayene);
             this.Controls.Add(this.gbKisiBilgileri);
             this.Controls.Add(this.lblKayitli);
-            this.Controls.Add(this.lbKisiler);
+            this.Controls.Add(this.lstKisiler);
             this.Controls.Add(this.msIslemler);
             this.MainMenuStrip = this.msIslemler;
             this.Name = "Form1";
@@ -563,7 +577,7 @@
         private System.Windows.Forms.TextBox txtSoyad;
         private System.Windows.Forms.TextBox txtAd;
         private System.Windows.Forms.Label lblKayitli;
-        private System.Windows.Forms.ListBox lbKisiler;
+        private System.Windows.Forms.ListBox lstKisiler;
         private System.Windows.Forms.DateTimePicker dtpMuayene;
         private System.Windows.Forms.GroupBox gbEkBilgiler;
         private System.Windows.Forms.Label label10;
@@ -575,11 +589,13 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cbGorev;
         private System.Windows.Forms.TextBox txtAra;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblAra;
         private System.Windows.Forms.GroupBox gbMuayeneBilgileri;
         private System.Windows.Forms.Label lblMuayeneBilgileri;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.SaveFileDialog dosyaKaydet;
+        private System.Windows.Forms.OpenFileDialog dosyaAc;
     }
 }
 
