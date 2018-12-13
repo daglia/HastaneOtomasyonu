@@ -269,5 +269,56 @@ namespace HastaneOtomasyonu
             txtTelefon.Text = "51234567890";
             txtTCKN.Text = "12345678901";
         }
+
+        private void cbDoktorSec_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int locX = flpMuayene.Location.X + 5, locY = flpMuayene.Location.Y + 5;
+            Button btn;
+            //for (int i = 0; i < 4; i++)
+            //{
+            //    Button btn = new Button();
+            //    btn.Size = new Size(flpMuayene.Size.Width / 5, flpMuayene.Size.Height / 8);
+            //    flpMuayene.Controls.Add(btn);
+            //    locX += btn.Size.Width + 5;
+            //}
+            for (int i = 0; i < 7; i++)
+            {
+
+                for (int j = 0; j < 4; j++)
+                {
+                    btn = new Button();
+                    //btn.Location = new Point(locX, locY);
+                    btn.Size = new Size(flpMuayene.Size.Width / 5, flpMuayene.Size.Height / 8);
+                    btn.Text = "kamil";
+
+                    flpMuayene.Controls.Add(btn);
+                    
+                    //locX += btn.Size.Width + 5;
+                    //if (j==3)
+                    //{
+                    //    locY += btn.Size.Height + 45;
+                    //    //flpMuayene.Controls.Add(btn);
+                    //}
+                    
+                }
+                
+            }
+
+            //dtpMuayene.MinDate = DateTime.Now;
+
+            //DateTime saat = new DateTime(2018, 11, 26, 9, 0, 0);
+            //String muayeneSaati = saat.ToString("HH:mm");
+
+            //while (muayeneSaati != "16:30")
+            //{
+            //    Console.WriteLine(muayeneSaati);
+            //    saat = saat.AddMinutes(15);
+            //    muayeneSaati = saat.ToString("HH:mm");
+            //    if (muayeneSaati == "11:45")
+            //    {
+            //        saat = saat.AddMinutes(60);
+            //    }
+
+        }
     }
 }

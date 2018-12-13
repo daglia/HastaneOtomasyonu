@@ -23,7 +23,7 @@ namespace HastaneOtomasyonu.Lib
 
         public override string ToString()
         {
-            return $"{hBrans} {Ad} {Soyad}";
+            return $"{hBrans} - Hem. {Ad} {Soyad}";
         }
     }
 }
