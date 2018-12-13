@@ -28,6 +28,7 @@ namespace HastaneOtomasyonu
         private void Form1_Load(object sender, EventArgs e)
         {
             toolStripComboBox1.SelectedIndex = 0;
+            cbGorev.SelectedIndex = 0;
             dtpMuayene.MinDate = DateTime.Now;
         }
 
@@ -45,6 +46,8 @@ namespace HastaneOtomasyonu
 
                 lblKayitli.Text = "Kayıtlı Hastalar";
                 gbKisiBilgileri.Text = "Hasta Bilgileri";
+
+                cbServisSec.DataSource = Enum.GetValues(typeof(Branslar));
 
             }
             else if (toolStripComboBox1.SelectedIndex == 1)
@@ -95,92 +98,22 @@ namespace HastaneOtomasyonu
 
         private void xMLOlarakAktarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dosyaAc.Title = "Bir XML dosyası seçiniz";
-            dosyaAc.Filter = "(XML Dosyası) | *.xml;";
-            dosyaAc.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            dosyaAc.FileName = "Kisiler.xml";
-
-            if (dosyaAc.ShowDialog() == DialogResult.OK)
-            {
-                XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Kisi>));
-                XmlReader reader = new XmlTextReader(dosyaAc.FileName);
-                if (xmlSerializer.CanDeserialize(reader))
-                {
-                    kisiler = xmlSerializer.Deserialize(reader) as List<Kisi>;
-                    MessageBox.Show($"{kisiler.Count} kişi sisteme başarıyla eklendi.");
-                    lstKisiler.Items.Clear();
-                    lstKisiler.Items.AddRange(kisiler.ToArray());
-                }
-                else
-                {
-                    MessageBox.Show("Lütfen bir XML dosyası seçin.");
-                }
-            }
+            
         }
 
         private void jSONOlarakAktarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dosyaAc.Title = "Bir JSON dosyası seçiniz";
-            dosyaAc.Filter = "(JSON Dosyası) | *.json;";
-            dosyaAc.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            dosyaAc.FileName = "Kisiler.json";
-
-            if (dosyaAc.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    FileStream dosya = File.OpenRead(dosyaAc.FileName);
-                    StreamReader reader = new StreamReader(dosya);
-                    string dosyaIcerigi = reader.ReadToEnd();
-                    reader.Close();
-                    dosya.Close();
-                    kisiler = JsonConvert.DeserializeObject<List<Kisi>>(dosyaIcerigi);
-
-                    MessageBox.Show($"{kisiler.Count} kişi sisteme başarıyla eklendi.");
-                    lstKisiler.Items.Clear();
-                    lstKisiler.Items.AddRange(kisiler.ToArray());
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Bir hata oluştu.");
-                }
-            }
+            
         }
 
         private void xMLOlarakAktarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            dosyaKaydet.Title = "Bir XML dosyası seçiniz";
-            dosyaKaydet.Filter = "(XML Dosyası) | *.xml;";
-            dosyaKaydet.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            dosyaKaydet.FileName = "Kisiler.xml";
-
-            if (dosyaKaydet.ShowDialog() == DialogResult.OK)
-            {
-                XmlSerializer serializer = new XmlSerializer(typeof(List<Kisi>));
-                TextWriter textWriter = new StreamWriter(dosyaKaydet.FileName);
-                serializer.Serialize(textWriter, kisiler); //Kisi class'ı public olmalı
-                textWriter.Close();
-                textWriter.Dispose();
-                MessageBox.Show($"XML başarıyla dışa aktarıldı: {dosyaKaydet.FileName}");
-            }
+            
         }
 
         private void jSONOlarakAktarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            dosyaKaydet.Title = "Bir JSON dosyası seçiniz";
-            dosyaKaydet.Filter = "(JSON Dosyası) | *.json;";
-            dosyaKaydet.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            dosyaKaydet.FileName = "Kisiler.json";
-
-            if (dosyaKaydet.ShowDialog() == DialogResult.OK)
-            {
-                FileStream file = File.Open(dosyaKaydet.FileName, FileMode.Open);
-                StreamWriter writer = new StreamWriter(file);
-                writer.Write(JsonConvert.SerializeObject(kisiler));
-                writer.Close();
-                writer.Dispose();
-                MessageBox.Show($"JSON başarıyla dışa aktarıldı: {dosyaKaydet.FileName}");
-            }
+            
         }
 
         Kisi yeniKisi;
@@ -254,8 +187,28 @@ namespace HastaneOtomasyonu
         {
             if (lstKisiler.SelectedItem == null) return;
 
-            Kisi seciliKisi = (Kisi)lstKisiler.SelectedItem;
-            kisiler.Remove(seciliKisi);
+            foreach (Hasta hs in kisiler.OfType<Hasta>())
+            {
+                Hasta seciliKisi = (Hasta)lstKisiler.SelectedItem;
+                kisiler.Remove(seciliKisi);
+            }
+            foreach (Doktor dr in kisiler.OfType<Doktor>())
+            {
+                Doktor seciliKisi = (Doktor)lstKisiler.SelectedItem;
+                kisiler.Remove(seciliKisi);
+            }
+            foreach (Hemsire hm in kisiler.OfType<Hemsire>())
+            {
+                Hemsire seciliKisi = (Hemsire)lstKisiler.SelectedItem;
+                kisiler.Remove(seciliKisi);
+            }
+            foreach (Personel ps in kisiler.OfType<Personel>())
+            {
+                Personel seciliKisi = (Personel)lstKisiler.SelectedItem;
+                kisiler.Remove(seciliKisi);
+            }
+
+            
 
             FormuTemizle();
             lstKisiler.Items.AddRange(kisiler.ToArray());
@@ -263,11 +216,74 @@ namespace HastaneOtomasyonu
 
         private void button1_Click(object sender, EventArgs e)
         {
-            txtAd.Text = "Alpero";
-            txtSoyad.Text = "Maduro";
-            txtMail.Text = "alperomaduro@gmail.com";
-            txtTelefon.Text = "51234567890";
-            txtTCKN.Text = "12345678901";
+            Random rnd = new Random();
+            int sayi = rnd.Next(0, 3);
+
+            switch (sayi)
+            {
+                case 0:
+                    txtAd.Text = "Alpero";
+                    txtSoyad.Text = "Maduro";
+                    txtMail.Text = "alperomaduro@gmail.com";
+                    txtTelefon.Text = "51234567890";
+                    txtTCKN.Text = "12345678901";
+                    break;
+                case 1:
+                    txtAd.Text = "Aychenauro";
+                    txtSoyad.Text = "Karaillo";
+                    txtMail.Text = "aychenaurokaraillo@gmail.com";
+                    txtTelefon.Text = "51266267890";
+                    txtTCKN.Text = "12345890901";
+                    break;
+                case 2:
+                    txtAd.Text = "Gözdillo";
+                    txtSoyad.Text = "Anaguro";
+                    txtMail.Text = "gozdilloanaguro@gmail.com";
+                    txtTelefon.Text = "51287694590";
+                    txtTCKN.Text = "12345679351";
+                    break;
+                default:
+                    break;
+            }
         }
+
+        private void cbGorev_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbGorev.SelectedIndex == 0)
+            {
+                cbHemsireDoktor.Enabled = false;
+
+                cbBrans.DataSource = Enum.GetValues(typeof(Branslar));
+            }
+            else if (cbGorev.SelectedIndex == 1)
+            {
+                cbHemsireDoktor.Enabled = true;
+
+                cbBrans.DataSource = Enum.GetValues(typeof(Branslar));
+            }
+            else if (cbGorev.SelectedIndex == 2)
+            {
+                cbHemsireDoktor.Enabled = false;
+
+                cbBrans.DataSource = Enum.GetValues(typeof(Gorevler));
+            }
+        }
+
+        private void cbServisSec_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbDoktorSec.Enabled = true;
+        }
+
+        private void cbDoktorSec_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbHemsireSec.Enabled = true;
+        }
+
+        private void cbHemsireSec_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dtpMuayene.Enabled = true;
+        }
+
+        
     }
 }

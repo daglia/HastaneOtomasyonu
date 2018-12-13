@@ -77,6 +77,10 @@
             this.dosyaKaydet = new System.Windows.Forms.SaveFileDialog();
             this.dosyaAc = new System.Windows.Forms.OpenFileDialog();
             this.button1 = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.msIslemler.SuspendLayout();
             this.gbMuayene.SuspendLayout();
             this.gbKisiBilgileri.SuspendLayout();
@@ -180,6 +184,7 @@
             this.btnSil.TabIndex = 12;
             this.btnSil.Text = "Sil";
             this.btnSil.UseVisualStyleBackColor = true;
+            this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
             // 
             // btnEkle
             // 
@@ -194,6 +199,10 @@
             // 
             // gbMuayene
             // 
+            this.gbMuayene.Controls.Add(this.label15);
+            this.gbMuayene.Controls.Add(this.label14);
+            this.gbMuayene.Controls.Add(this.label13);
+            this.gbMuayene.Controls.Add(this.label9);
             this.gbMuayene.Controls.Add(this.dtpMuayene);
             this.gbMuayene.Controls.Add(this.label7);
             this.gbMuayene.Controls.Add(this.cbHemsireSec);
@@ -208,10 +217,11 @@
             // 
             // dtpMuayene
             // 
-            this.dtpMuayene.Location = new System.Drawing.Point(6, 97);
+            this.dtpMuayene.Enabled = false;
+            this.dtpMuayene.Location = new System.Drawing.Point(56, 97);
             this.dtpMuayene.MinDate = new System.DateTime(2018, 12, 12, 0, 0, 0, 0);
             this.dtpMuayene.Name = "dtpMuayene";
-            this.dtpMuayene.Size = new System.Drawing.Size(345, 20);
+            this.dtpMuayene.Size = new System.Drawing.Size(295, 20);
             this.dtpMuayene.TabIndex = 4;
             // 
             // label7
@@ -225,30 +235,35 @@
             // 
             // cbHemsireSec
             // 
+            this.cbHemsireSec.Enabled = false;
             this.cbHemsireSec.FormattingEnabled = true;
-            this.cbHemsireSec.Location = new System.Drawing.Point(6, 70);
+            this.cbHemsireSec.Location = new System.Drawing.Point(56, 70);
             this.cbHemsireSec.Name = "cbHemsireSec";
-            this.cbHemsireSec.Size = new System.Drawing.Size(345, 21);
+            this.cbHemsireSec.Size = new System.Drawing.Size(295, 21);
             this.cbHemsireSec.TabIndex = 2;
             this.cbHemsireSec.Text = "Hemşire Seçiniz";
+            this.cbHemsireSec.SelectedIndexChanged += new System.EventHandler(this.cbHemsireSec_SelectedIndexChanged);
             // 
             // cbDoktorSec
             // 
+            this.cbDoktorSec.Enabled = false;
             this.cbDoktorSec.FormattingEnabled = true;
-            this.cbDoktorSec.Location = new System.Drawing.Point(6, 44);
+            this.cbDoktorSec.Location = new System.Drawing.Point(56, 44);
             this.cbDoktorSec.Name = "cbDoktorSec";
-            this.cbDoktorSec.Size = new System.Drawing.Size(345, 21);
+            this.cbDoktorSec.Size = new System.Drawing.Size(295, 21);
             this.cbDoktorSec.TabIndex = 1;
             this.cbDoktorSec.Text = "Doktor Seçiniz";
+            this.cbDoktorSec.SelectedIndexChanged += new System.EventHandler(this.cbDoktorSec_SelectedIndexChanged);
             // 
             // cbServisSec
             // 
             this.cbServisSec.FormattingEnabled = true;
-            this.cbServisSec.Location = new System.Drawing.Point(6, 17);
+            this.cbServisSec.Location = new System.Drawing.Point(56, 17);
             this.cbServisSec.Name = "cbServisSec";
-            this.cbServisSec.Size = new System.Drawing.Size(345, 21);
+            this.cbServisSec.Size = new System.Drawing.Size(295, 21);
             this.cbServisSec.TabIndex = 0;
             this.cbServisSec.Text = "Servis Seçiniz";
+            this.cbServisSec.SelectedIndexChanged += new System.EventHandler(this.cbServisSec_SelectedIndexChanged);
             // 
             // gbKisiBilgileri
             // 
@@ -422,6 +437,7 @@
             this.cbGorev.Name = "cbGorev";
             this.cbGorev.Size = new System.Drawing.Size(114, 21);
             this.cbGorev.TabIndex = 10;
+            this.cbGorev.SelectedIndexChanged += new System.EventHandler(this.cbGorev_SelectedIndexChanged);
             // 
             // cbHemsireDoktor
             // 
@@ -527,6 +543,42 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(14, 19);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(36, 13);
+            this.label9.TabIndex = 10;
+            this.label9.Text = "Servis";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(11, 47);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(39, 13);
+            this.label13.TabIndex = 11;
+            this.label13.Text = "Doktor";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(5, 73);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(45, 13);
+            this.label14.TabIndex = 12;
+            this.label14.Text = "Hemşire";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(19, 100);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(31, 13);
+            this.label15.TabIndex = 13;
+            this.label15.Text = "Tarih";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -614,6 +666,10 @@
         private System.Windows.Forms.SaveFileDialog dosyaKaydet;
         private System.Windows.Forms.OpenFileDialog dosyaAc;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label9;
     }
 }
 
