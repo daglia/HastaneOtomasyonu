@@ -101,5 +101,10 @@ namespace HastaneOtomasyonu
                 }
             }
         }
+
+        public override string ToString()
+        {
+            return $"{Ad} {Soyad}";
+        }
     }
 }
