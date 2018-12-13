@@ -274,10 +274,10 @@ namespace HastaneOtomasyonu
             cbDoktorSec.Enabled = true;
         }
 
-        private void cbDoktorSec_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cbHemsireSec.Enabled = true;
-        }
+        //private void cbDoktorSec_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //  cbHemsireSec.Enabled = true;
+        //}
 
         private void cbHemsireSec_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -286,6 +286,7 @@ namespace HastaneOtomasyonu
 
         private void cbDoktorSec_SelectedIndexChanged(object sender, EventArgs e)
         {
+            cbHemsireSec.Enabled = true;
             int locX = flpMuayene.Location.X + 5, locY = flpMuayene.Location.Y + 5;
             Button btn;
             //for (int i = 0; i < 4; i++)

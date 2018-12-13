@@ -255,7 +255,7 @@
             this.cbDoktorSec.FormattingEnabled = true;
             this.cbDoktorSec.Items.AddRange(new object[] {
             "Kamil Başarır"});
-            this.cbDoktorSec.Location = new System.Drawing.Point(6, 44);
+            this.cbDoktorSec.Location = new System.Drawing.Point(56, 44);
             this.cbDoktorSec.Name = "cbDoktorSec";
             this.cbDoktorSec.Size = new System.Drawing.Size(295, 21);
             this.cbDoktorSec.TabIndex = 1;
