@@ -8,6 +8,6 @@ namespace HastaneOtomasyonu.Lib
 {
     public interface IMudahaleEdebilir
     {
-        void MudahaleEt(Doktor doktor, DateTime mudahaleSaati);
+        void MudahaleEt(Hasta hasta, DateTime mudahaleSaati);
     }
 }

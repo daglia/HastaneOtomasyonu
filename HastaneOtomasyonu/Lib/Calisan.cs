@@ -9,9 +9,7 @@ namespace HastaneOtomasyonu.Lib
     public abstract class Calisan : Kisi, IMaasAlabilir
     {
         public decimal _saatlikUcret;
-        public Calisan()
-        {
-        }
+        public Calisan() { }
         public Calisan(string ad, string soyad) : base(ad, soyad)
         {
         }

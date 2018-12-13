@@ -83,9 +83,7 @@ namespace HastaneOtomasyonu
             }
         }
 
-        public Kisi()
-        {
-        }
+        public Kisi() { }
 
         public Kisi(string ad, string soyad)
         {
