@@ -98,22 +98,22 @@ namespace HastaneOtomasyonu
 
         private void xMLOlarakAktarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void jSONOlarakAktarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void xMLOlarakAktarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void jSONOlarakAktarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         Kisi yeniKisi;
@@ -208,7 +208,7 @@ namespace HastaneOtomasyonu
                 kisiler.Remove(seciliKisi);
             }
 
-            
+
 
             FormuTemizle();
             lstKisiler.Items.AddRange(kisiler.ToArray());
@@ -274,11 +274,6 @@ namespace HastaneOtomasyonu
             cbDoktorSec.Enabled = true;
         }
 
-        //private void cbDoktorSec_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //  cbHemsireSec.Enabled = true;
-        //}
-
         private void cbHemsireSec_SelectedIndexChanged(object sender, EventArgs e)
         {
             dtpMuayene.Enabled = true;
@@ -287,55 +282,29 @@ namespace HastaneOtomasyonu
         private void cbDoktorSec_SelectedIndexChanged(object sender, EventArgs e)
         {
             cbHemsireSec.Enabled = true;
-            int locX = flpMuayene.Location.X + 5, locY = flpMuayene.Location.Y + 5;
             Button btn;
-            //for (int i = 0; i < 4; i++)
-            //{
-            //    Button btn = new Button();
-            //    btn.Size = new Size(flpMuayene.Size.Width / 5, flpMuayene.Size.Height / 8);
-            //    flpMuayene.Controls.Add(btn);
-            //    locX += btn.Size.Width + 5;
-            //}
-            for (int i = 0; i < 7; i++)
+            DateTime muayeneSaati = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 9, 0, 0);
+            int kontrol;
+
+            for (int i = 0; i < 28; i++)
             {
+                btn = new Button();
+                btn.Size = new Size(flpMuayene.Size.Width / 5, flpMuayene.Size.Height / 8);
+                btn.FlatStyle = FlatStyle.Popup;
+                btn.Text = muayeneSaati.ToShortTimeString();
 
-                for (int j = 0; j < 4; j++)
-                {
-                    btn = new Button();
-                    //btn.Location = new Point(locX, locY);
-                    btn.Size = new Size(flpMuayene.Size.Width / 5, flpMuayene.Size.Height / 8);
-                    btn.Text = "kamil";
+                if (muayeneSaati.ToShortTimeString().ToString()=="12:00") muayeneSaati = muayeneSaati.AddHours(1);
 
-                    flpMuayene.Controls.Add(btn);
-                    
-                    //locX += btn.Size.Width + 5;
-                    //if (j==3)
-                    //{
-                    //    locY += btn.Size.Height + 45;
-                    //    //flpMuayene.Controls.Add(btn);
-                    //}
-                    
-                }
-                
+                kontrol=TimeSpan.Compare(muayeneSaati.TimeOfDay, DateTime.Now.TimeOfDay);
+
+                if (kontrol == -1) btn.Enabled = false;
+
+                muayeneSaati = muayeneSaati.AddMinutes(15);
+
+                flpMuayene.Controls.Add(btn);
             }
-
-            //dtpMuayene.MinDate = DateTime.Now;
-
-            //DateTime saat = new DateTime(2018, 11, 26, 9, 0, 0);
-            //String muayeneSaati = saat.ToString("HH:mm");
-
-            //while (muayeneSaati != "16:30")
-            //{
-            //    Console.WriteLine(muayeneSaati);
-            //    saat = saat.AddMinutes(15);
-            //    muayeneSaati = saat.ToString("HH:mm");
-            //    if (muayeneSaati == "11:45")
-            //    {
-            //        saat = saat.AddMinutes(60);
-            //    }
 
         }
 
-        
     }
 }

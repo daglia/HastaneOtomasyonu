@@ -168,7 +168,7 @@
             // btnHastaGuncelle
             // 
             this.btnHastaGuncelle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnHastaGuncelle.Location = new System.Drawing.Point(231, 482);
+            this.btnHastaGuncelle.Location = new System.Drawing.Point(231, 522);
             this.btnHastaGuncelle.Name = "btnHastaGuncelle";
             this.btnHastaGuncelle.Size = new System.Drawing.Size(79, 34);
             this.btnHastaGuncelle.TabIndex = 13;
@@ -179,7 +179,7 @@
             // btnSil
             // 
             this.btnSil.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSil.Location = new System.Drawing.Point(329, 482);
+            this.btnSil.Location = new System.Drawing.Point(329, 522);
             this.btnSil.Name = "btnSil";
             this.btnSil.Size = new System.Drawing.Size(79, 34);
             this.btnSil.TabIndex = 12;
@@ -190,7 +190,7 @@
             // btnEkle
             // 
             this.btnEkle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnEkle.Location = new System.Drawing.Point(231, 444);
+            this.btnEkle.Location = new System.Drawing.Point(231, 482);
             this.btnEkle.Name = "btnEkle";
             this.btnEkle.Size = new System.Drawing.Size(177, 32);
             this.btnEkle.TabIndex = 11;
@@ -208,16 +208,16 @@
             this.gbMuayene.Controls.Add(this.cbServisSec);
             this.gbMuayene.Location = new System.Drawing.Point(415, 59);
             this.gbMuayene.Name = "gbMuayene";
-            this.gbMuayene.Size = new System.Drawing.Size(357, 379);
+            this.gbMuayene.Size = new System.Drawing.Size(357, 417);
             this.gbMuayene.TabIndex = 10;
             this.gbMuayene.TabStop = false;
             this.gbMuayene.Text = "Muayene İşlemleri";
             // 
             // flpMuayene
             // 
-            this.flpMuayene.Location = new System.Drawing.Point(0, 157);
+            this.flpMuayene.Location = new System.Drawing.Point(0, 139);
             this.flpMuayene.Name = "flpMuayene";
-            this.flpMuayene.Size = new System.Drawing.Size(357, 222);
+            this.flpMuayene.Size = new System.Drawing.Size(357, 278);
             this.flpMuayene.TabIndex = 5;
             // 
             // dtpMuayene
@@ -232,7 +232,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 130);
+            this.label7.Location = new System.Drawing.Point(6, 123);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(321, 13);
             this.label7.TabIndex = 3;
@@ -385,7 +385,7 @@
             this.lstKisiler.FormattingEnabled = true;
             this.lstKisiler.Location = new System.Drawing.Point(12, 135);
             this.lstKisiler.Name = "lstKisiler";
-            this.lstKisiler.Size = new System.Drawing.Size(213, 381);
+            this.lstKisiler.Size = new System.Drawing.Size(213, 420);
             this.lstKisiler.TabIndex = 7;
             // 
             // gbEkBilgiler
@@ -516,7 +516,7 @@
             // gbMuayeneBilgileri
             // 
             this.gbMuayeneBilgileri.Controls.Add(this.lblMuayeneBilgileri);
-            this.gbMuayeneBilgileri.Location = new System.Drawing.Point(415, 444);
+            this.gbMuayeneBilgileri.Location = new System.Drawing.Point(414, 482);
             this.gbMuayeneBilgileri.Name = "gbMuayeneBilgileri";
             this.gbMuayeneBilgileri.Size = new System.Drawing.Size(351, 74);
             this.gbMuayeneBilgileri.TabIndex = 12;
@@ -590,7 +590,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(784, 568);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.gbMuayeneBilgileri);
             this.Controls.Add(this.lblAra);
