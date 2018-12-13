@@ -149,6 +149,12 @@ namespace HastaneOtomasyonu
                 yeniKisi.Telefon = txtTelefon.Text;
                 yeniKisi.TCKN = txtTCKN.Text;
 
+                foreach(Kisi kisi in kisiler)
+                {
+                    if (yeniKisi.TCKN == kisi.TCKN)
+                        throw new Exception("Aynı kişiyi tekrar giremezsiniz.");
+                }
+
                 kisiler.Add(yeniKisi);
                 //MessageBox.Show($"Hosgeldin {yeniKisi.Ad} {yeniKisi.Soyad}");
                 FormuTemizle();
@@ -156,7 +162,7 @@ namespace HastaneOtomasyonu
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Sorun", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
@@ -187,28 +193,8 @@ namespace HastaneOtomasyonu
         {
             if (lstKisiler.SelectedItem == null) return;
 
-            foreach (Hasta hs in kisiler.OfType<Hasta>())
-            {
-                Hasta seciliKisi = (Hasta)lstKisiler.SelectedItem;
-                kisiler.Remove(seciliKisi);
-            }
-            foreach (Doktor dr in kisiler.OfType<Doktor>())
-            {
-                Doktor seciliKisi = (Doktor)lstKisiler.SelectedItem;
-                kisiler.Remove(seciliKisi);
-            }
-            foreach (Hemsire hm in kisiler.OfType<Hemsire>())
-            {
-                Hemsire seciliKisi = (Hemsire)lstKisiler.SelectedItem;
-                kisiler.Remove(seciliKisi);
-            }
-            foreach (Personel ps in kisiler.OfType<Personel>())
-            {
-                Personel seciliKisi = (Personel)lstKisiler.SelectedItem;
-                kisiler.Remove(seciliKisi);
-            }
-
-            
+            Kisi seciliKisi = (Kisi)lstKisiler.SelectedItem;
+            kisiler.Remove(seciliKisi);
 
             FormuTemizle();
             lstKisiler.Items.AddRange(kisiler.ToArray());
@@ -336,6 +322,33 @@ namespace HastaneOtomasyonu
 
         }
 
-        
+        private void lstKisiler_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstKisiler.SelectedItem == null) return;
+
+            Kisi seciliKisi = (Kisi)lstKisiler.SelectedItem;
+            txtAd.Text = seciliKisi.Ad;
+            txtSoyad.Text = seciliKisi.Soyad;
+            txtMail.Text = seciliKisi.email;
+            txtTelefon.Text = seciliKisi.Telefon;
+            txtTCKN.Text = seciliKisi.TCKN;
+
+            if (seciliKisi is Hasta)
+            {
+
+            }
+            if (seciliKisi is Doktor)
+            {
+
+            }
+            if (seciliKisi is Hemsire)
+            {
+
+            }
+            if (seciliKisi is Personel)
+            {
+
+            }
+        }
     }
 }
