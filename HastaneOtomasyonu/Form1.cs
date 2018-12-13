@@ -264,5 +264,14 @@ namespace HastaneOtomasyonu
             FormuTemizle();
             lstKisiler.Items.AddRange(kisiler.ToArray());
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            txtAd.Text = "Alpero";
+            txtSoyad.Text = "Maduro";
+            txtMail.Text = "alperomaduro@gmail.com";
+            txtTelefon.Text = "51234567890";
+            txtTCKN.Text = "12345678901";
+        }
     }
 }

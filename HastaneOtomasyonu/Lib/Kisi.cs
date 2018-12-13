@@ -39,14 +39,14 @@ namespace HastaneOtomasyonu
             get => this._telefon;
             set
             {
-                if (!value.StartsWith("0"))
-                    throw new Exception("Telefon numarasi 0 ile baslamali");
+                if (!value.StartsWith("5"))
+                    throw new Exception("Telefon numarası 5 ile başlamalı");
                 if (value.Length != 11)
-                    throw new Exception("Telefon numaraniz 11 hane olmali");
+                    throw new Exception("Telefon numaranız 10 hane olmalı");
                 foreach (char digit in value)
                 {
                     if (!char.IsDigit(digit))
-                        throw new Exception("Telefon numaraniz sadece rakamlardan olusmalidir");
+                        throw new Exception("Telefon numaranız sadece rakamlardan oluşmalıdır");
                 }
 
                 this._telefon = value;

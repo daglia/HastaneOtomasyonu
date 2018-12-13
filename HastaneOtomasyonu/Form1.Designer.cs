@@ -76,6 +76,7 @@
             this.lblMuayeneBilgileri = new System.Windows.Forms.Label();
             this.dosyaKaydet = new System.Windows.Forms.SaveFileDialog();
             this.dosyaAc = new System.Windows.Forms.OpenFileDialog();
+            this.button1 = new System.Windows.Forms.Button();
             this.msIslemler.SuspendLayout();
             this.gbMuayene.SuspendLayout();
             this.gbKisiBilgileri.SuspendLayout();
@@ -109,20 +110,20 @@
             this.xMLOlarakAktarToolStripMenuItem,
             this.jSONOlarakAktarToolStripMenuItem});
             this.içeriAktarToolStripMenuItem.Name = "içeriAktarToolStripMenuItem";
-            this.içeriAktarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.içeriAktarToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.içeriAktarToolStripMenuItem.Text = "İçeri Aktar";
             // 
             // xMLOlarakAktarToolStripMenuItem
             // 
             this.xMLOlarakAktarToolStripMenuItem.Name = "xMLOlarakAktarToolStripMenuItem";
-            this.xMLOlarakAktarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.xMLOlarakAktarToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.xMLOlarakAktarToolStripMenuItem.Text = "XML olarak aktar";
             this.xMLOlarakAktarToolStripMenuItem.Click += new System.EventHandler(this.xMLOlarakAktarToolStripMenuItem_Click);
             // 
             // jSONOlarakAktarToolStripMenuItem
             // 
             this.jSONOlarakAktarToolStripMenuItem.Name = "jSONOlarakAktarToolStripMenuItem";
-            this.jSONOlarakAktarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.jSONOlarakAktarToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.jSONOlarakAktarToolStripMenuItem.Text = "JSON olarak aktar";
             this.jSONOlarakAktarToolStripMenuItem.Click += new System.EventHandler(this.jSONOlarakAktarToolStripMenuItem_Click);
             // 
@@ -132,7 +133,7 @@
             this.xMLOlarakAktarToolStripMenuItem1,
             this.jSONOlarakAktarToolStripMenuItem1});
             this.dışarıAktarToolStripMenuItem.Name = "dışarıAktarToolStripMenuItem";
-            this.dışarıAktarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dışarıAktarToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.dışarıAktarToolStripMenuItem.Text = "Dışarı Aktar";
             // 
             // xMLOlarakAktarToolStripMenuItem1
@@ -162,6 +163,7 @@
             // 
             // btnHastaGuncelle
             // 
+            this.btnHastaGuncelle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnHastaGuncelle.Location = new System.Drawing.Point(231, 482);
             this.btnHastaGuncelle.Name = "btnHastaGuncelle";
             this.btnHastaGuncelle.Size = new System.Drawing.Size(79, 34);
@@ -172,16 +174,17 @@
             // 
             // btnSil
             // 
+            this.btnSil.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSil.Location = new System.Drawing.Point(329, 482);
             this.btnSil.Name = "btnSil";
             this.btnSil.Size = new System.Drawing.Size(79, 34);
             this.btnSil.TabIndex = 12;
             this.btnSil.Text = "Sil";
             this.btnSil.UseVisualStyleBackColor = true;
-            this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
             // 
             // btnEkle
             // 
+            this.btnEkle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEkle.Location = new System.Drawing.Point(231, 444);
             this.btnEkle.Name = "btnEkle";
             this.btnEkle.Size = new System.Drawing.Size(177, 32);
@@ -199,7 +202,7 @@
             this.gbMuayene.Controls.Add(this.cbServisSec);
             this.gbMuayene.Location = new System.Drawing.Point(415, 59);
             this.gbMuayene.Name = "gbMuayene";
-            this.gbMuayene.Size = new System.Drawing.Size(357, 288);
+            this.gbMuayene.Size = new System.Drawing.Size(357, 379);
             this.gbMuayene.TabIndex = 10;
             this.gbMuayene.TabStop = false;
             this.gbMuayene.Text = "Muayene İşlemleri";
@@ -491,9 +494,9 @@
             // gbMuayeneBilgileri
             // 
             this.gbMuayeneBilgileri.Controls.Add(this.lblMuayeneBilgileri);
-            this.gbMuayeneBilgileri.Location = new System.Drawing.Point(415, 353);
+            this.gbMuayeneBilgileri.Location = new System.Drawing.Point(415, 444);
             this.gbMuayeneBilgileri.Name = "gbMuayeneBilgileri";
-            this.gbMuayeneBilgileri.Size = new System.Drawing.Size(351, 165);
+            this.gbMuayeneBilgileri.Size = new System.Drawing.Size(351, 74);
             this.gbMuayeneBilgileri.TabIndex = 12;
             this.gbMuayeneBilgileri.TabStop = false;
             this.gbMuayeneBilgileri.Text = "Muayene Bilgileri";
@@ -511,11 +514,26 @@
             // 
             this.dosyaAc.FileName = "openFileDialog1";
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Font = new System.Drawing.Font("Book Antiqua", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button1.Location = new System.Drawing.Point(231, 30);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(178, 24);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "MUHTEŞEM KİŞİ EKLEME";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.gbMuayeneBilgileri);
             this.Controls.Add(this.lblAra);
             this.Controls.Add(this.txtAra);
@@ -596,6 +614,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.SaveFileDialog dosyaKaydet;
         private System.Windows.Forms.OpenFileDialog dosyaAc;
+        private System.Windows.Forms.Button button1;
     }
 }
 
