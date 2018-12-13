@@ -41,6 +41,7 @@
             this.btnSil = new System.Windows.Forms.Button();
             this.btnEkle = new System.Windows.Forms.Button();
             this.gbMuayene = new System.Windows.Forms.GroupBox();
+            this.flpMuayene = new System.Windows.Forms.FlowLayoutPanel();
             this.dtpMuayene = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.cbHemsireSec = new System.Windows.Forms.ComboBox();
@@ -199,10 +200,7 @@
             // 
             // gbMuayene
             // 
-            this.gbMuayene.Controls.Add(this.label15);
-            this.gbMuayene.Controls.Add(this.label14);
-            this.gbMuayene.Controls.Add(this.label13);
-            this.gbMuayene.Controls.Add(this.label9);
+            this.gbMuayene.Controls.Add(this.flpMuayene);
             this.gbMuayene.Controls.Add(this.dtpMuayene);
             this.gbMuayene.Controls.Add(this.label7);
             this.gbMuayene.Controls.Add(this.cbHemsireSec);
@@ -214,6 +212,13 @@
             this.gbMuayene.TabIndex = 10;
             this.gbMuayene.TabStop = false;
             this.gbMuayene.Text = "Muayene İşlemleri";
+            // 
+            // flpMuayene
+            // 
+            this.flpMuayene.Location = new System.Drawing.Point(0, 157);
+            this.flpMuayene.Name = "flpMuayene";
+            this.flpMuayene.Size = new System.Drawing.Size(357, 222);
+            this.flpMuayene.TabIndex = 5;
             // 
             // dtpMuayene
             // 
@@ -248,7 +253,9 @@
             // 
             this.cbDoktorSec.Enabled = false;
             this.cbDoktorSec.FormattingEnabled = true;
-            this.cbDoktorSec.Location = new System.Drawing.Point(56, 44);
+            this.cbDoktorSec.Items.AddRange(new object[] {
+            "Kamil Başarır"});
+            this.cbDoktorSec.Location = new System.Drawing.Point(6, 44);
             this.cbDoktorSec.Name = "cbDoktorSec";
             this.cbDoktorSec.Size = new System.Drawing.Size(295, 21);
             this.cbDoktorSec.TabIndex = 1;
@@ -666,6 +673,7 @@
         private System.Windows.Forms.SaveFileDialog dosyaKaydet;
         private System.Windows.Forms.OpenFileDialog dosyaAc;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.FlowLayoutPanel flpMuayene;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
