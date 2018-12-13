@@ -8,20 +8,14 @@ namespace HastaneOtomasyonu.Lib
 {
     public class Hemsire : Calisan, IMudahaleEdebilir
     {
-        //public Branslar HBrans { get; set; }
         public string hBrans;
 
-        public Hemsire()
-        {
-        }
+        public Hemsire() { }
         public Hemsire(string ad, string soyad) : base(ad, soyad)
         {
-            //Doktor doktor = new Doktor("aaa","aaa",Branslar.GöğüsHastalıkları);
-            //this.hBrans = doktor.DBrans.ToString();
-
         }
 
-        public void MudahaleEt(Doktor doktor, DateTime mudahaleSaati)
+        public void MudahaleEt(Hasta hasta, DateTime mudahaleSaati)
         {
             //doktor.MudahaleEt();
             throw new NotImplementedException();
@@ -29,7 +23,7 @@ namespace HastaneOtomasyonu.Lib
 
         public override string ToString()
         {
-            return $"Ad: {Ad}\nSoyad: {Soyad}\nBrans: {hBrans}";
+            return $"{hBrans} {Ad} {Soyad}";
         }
     }
 }

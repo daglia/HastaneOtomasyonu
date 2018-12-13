@@ -83,9 +83,7 @@ namespace HastaneOtomasyonu
             }
         }
 
-        public Kisi()
-        {
-        }
+        public Kisi() { }
 
         public Kisi(string ad, string soyad)
         {
@@ -102,6 +100,11 @@ namespace HastaneOtomasyonu
                     throw new Exception($"{propertyName} girisi sadece harf ve bosluklarla yapilmalidir.");
                 }
             }
+        }
+
+        public override string ToString()
+        {
+            return $"{Ad} {Soyad}";
         }
     }
 }

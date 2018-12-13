@@ -25,14 +25,10 @@ namespace HastaneOtomasyonu
         List<Kisi> kisiler = new List<Kisi>();
         List<Kisi> aramalar = new List<Kisi>();
 
-        private void toolStripComboBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             toolStripComboBox1.SelectedIndex = 0;
+            dtpMuayene.MinDate = DateTime.Now;
         }
 
         private void toolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -191,14 +187,14 @@ namespace HastaneOtomasyonu
 
         private void btnEkle_Click(object sender, EventArgs e)
         {
-            
-            if(toolStripComboBox1.SelectedIndex == 0) //Hasta
+
+            if (toolStripComboBox1.SelectedIndex == 0) //Hasta
             {
                 yeniKisi = new Hasta(txtAd.Text, txtSoyad.Text);
             }
-            else if(toolStripComboBox1.SelectedIndex == 1) //Calışan
+            else if (toolStripComboBox1.SelectedIndex == 1) //Calışan
             {
-                if(cbGorev.SelectedIndex == 0) //Doktor
+                if (cbGorev.SelectedIndex == 0) //Doktor
                 {
                     yeniKisi = new Doktor(txtAd.Text, txtSoyad.Text, (Branslar)cbBrans.SelectedItem);
                 }
@@ -211,7 +207,7 @@ namespace HastaneOtomasyonu
                     yeniKisi = new Personel(txtAd.Text, txtSoyad.Text, (Gorevler)cbBrans.SelectedItem);
                 }
             }
-            
+
             try
             {
                 yeniKisi.Ad = txtAd.Text;
