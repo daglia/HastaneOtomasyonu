@@ -45,11 +45,13 @@ namespace HastaneOtomasyonu
                 gbMuayene.Visible = true;
                 gbMuayeneBilgileri.Visible = true;
                 gbEkBilgiler.Visible = false;
+                flpMuayene.Visible = true;
 
                 //Label işlemleri
 
                 lblKayitli.Text = "Kayıtlı Hastalar";
                 gbKisiBilgileri.Text = "Hasta Bilgileri";
+                flpMuayene.Visible = true;
 
                 cbServisSec.DataSource = Enum.GetValues(typeof(Branslar));
                 lstKisiler.Items.Clear();
@@ -68,7 +70,7 @@ namespace HastaneOtomasyonu
 
                 gbMuayene.Visible = false;
                 gbEkBilgiler.Visible = true;
-                gbMuayeneBilgileri.Visible = false;
+                flpMuayene.Visible = false;
 
                 //Label işlemleri
 
@@ -114,13 +116,24 @@ namespace HastaneOtomasyonu
                         }
                         else if (gbControl is CheckBox)
                             (gbControl as CheckBox).Checked = false;
+                        else if (gbControl is ComboBox)
+                        {
+                            gbControl.ResetText();
+                            if (gbControl.Name == "cbServisSec") continue;
+                            gbControl.Enabled = false;
+                        }
+                        else if (gbControl is DateTimePicker)
+                        {
+                            gbControl.Enabled = false;
+                            gbControl.ResetText();
+                        }
                     }
                 }
                 else if (control is FlowLayoutPanel flowLayoutPanel)
                 {
                     foreach (Control flpControl in flowLayoutPanel.Controls)
                     {
-                        //if (flpControl is Button) flpControl.Enabled = false;
+                        flpControl.Visible = false;
                     }
                 }
 
