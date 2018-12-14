@@ -97,18 +97,22 @@ namespace HastaneOtomasyonu
 
         private void FormuTemizle()
         {
+            
             foreach (Control control in this.Controls)
             {
-                if (control is TextBox)
+                if (control is GroupBox groupBox)
                 {
-                    if (control.Name == "txtAra")
-                        continue;
-                    control.Text = string.Empty;
+                    foreach (Control gbControl in groupBox.Controls)
+                    {
+                        if (gbControl is TextBox)
+                        {
+                            gbControl.Text = string.Empty;
+                        }
+                        else if (gbControl is CheckBox)
+                            (gbControl as CheckBox).Checked = false;
+                    }
                 }
-                else if (control is CheckBox)
-                    (control as CheckBox).Checked = false;
-                else if (control is ListBox lstBox)
-                    lstBox.Items.Clear();
+                lstKisiler.Items.Clear();
             }
         }
 
