@@ -50,6 +50,14 @@ namespace HastaneOtomasyonu
                 gbKisiBilgileri.Text = "Hasta Bilgileri";
 
                 cbServisSec.DataSource = Enum.GetValues(typeof(Branslar));
+                lstKisiler.Items.Clear();
+
+                foreach (Kisi kisi in kisiler)
+                {
+                    if (kisi is Hasta)
+                        lstKisiler.Items.Add(kisi);
+                }
+                
 
             }
             else if (toolStripComboBox1.SelectedIndex == 1)
@@ -64,6 +72,14 @@ namespace HastaneOtomasyonu
 
                 lblKayitli.Text = "Kayıtlı Çalışanlar";
                 gbKisiBilgileri.Text = "Çalışan Bilgileri";
+
+                lstKisiler.Items.Clear();
+
+                foreach (Kisi kisi in kisiler)
+                {
+                    if (kisi is Calisan)
+                        lstKisiler.Items.Add(kisi);
+                }
             }
         }
 
@@ -320,21 +336,26 @@ namespace HastaneOtomasyonu
             txtTelefon.Text = seciliKisi.Telefon;
             txtTCKN.Text = seciliKisi.TCKN;
 
-            if (seciliKisi is Hasta)
+            if (seciliKisi is Hasta hasta)
             {
 
             }
-            if (seciliKisi is Doktor)
+            else if (seciliKisi is Doktor doktor)
             {
+                cbGorev.SelectedIndex = 0;
+                cbBrans.SelectedItem = (Enum)doktor.DBrans;
+                //txtSaatlikUcret.Text = doktor.SaatlikUcret.ToString();
+            }
+            else if (seciliKisi is Hemsire hemsire)
+            {
+                cbGorev.SelectedIndex = 1;
+                cbBrans.SelectedItem = (Enum)hemsire.HBrans;
 
             }
-            if (seciliKisi is Hemsire)
+            else if (seciliKisi is Personel personel)
             {
-
-            }
-            if (seciliKisi is Personel)
-            {
-
+                cbGorev.SelectedIndex = 2;
+                cbBrans.SelectedItem = (Enum)personel.CGorev;
             }
         }
     }

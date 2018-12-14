@@ -8,7 +8,7 @@ namespace HastaneOtomasyonu.Lib
 {
     public class Hemsire : Calisan, IMudahaleEdebilir
     {
-        public string hBrans;
+        public Branslar HBrans { get; set; }
 
         public Hemsire() { }
         public Hemsire(string ad, string soyad) : base(ad, soyad)
@@ -23,7 +23,7 @@ namespace HastaneOtomasyonu.Lib
 
         public override string ToString()
         {
-            return $"{hBrans} - Hem. {Ad} {Soyad}";
+            return $"{HBrans} - Hem. {Ad} {Soyad}";
         }
     }
 }
