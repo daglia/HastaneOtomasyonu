@@ -45,7 +45,8 @@ namespace HastaneOtomasyonu
                 gbMuayene.Visible = true;
                 gbMuayeneBilgileri.Visible = true;
                 gbEkBilgiler.Visible = false;
-                flpMuayene.Visible = true;
+                if(dtpMuayene.Enabled == true)
+                    flpMuayene.Visible = true;
 
                 //Label işlemleri
 
@@ -202,9 +203,22 @@ namespace HastaneOtomasyonu
                 }
 
                 kisiler.Add(yeniKisi);
+
                 //MessageBox.Show($"Hosgeldin {yeniKisi.Ad} {yeniKisi.Soyad}");
                 FormuTemizle();
-                lstKisiler.Items.AddRange(kisiler.ToArray());
+                if(toolStripComboBox1.SelectedIndex == 0)
+                    foreach (Kisi kisi in kisiler)
+                    {
+                        if (kisi is Hasta)
+                            lstKisiler.Items.Add(kisi);
+                    }
+                else if(toolStripComboBox1.SelectedIndex == 1)
+                    foreach (Kisi kisi in kisiler)
+                    {
+                        if (kisi is Calisan)
+                            lstKisiler.Items.Add(kisi);
+                    }
+                lstKisiler.Sorted = true;
             }
             catch (Exception ex)
             {
@@ -348,7 +362,7 @@ namespace HastaneOtomasyonu
                     txtAd.Text = "Shuqurro";
                     txtSoyad.Text = "Toulosso";
                     txtMail.Text = "shuq@gmail.com";
-                    txtTelefon.Text = "11007699054";
+                    txtTelefon.Text = "51007699054";
                     txtTCKN.Text = "12111477787";
                     break;
                 case 14:
@@ -362,7 +376,7 @@ namespace HastaneOtomasyonu
                     txtAd.Text = "Fourkhan";
                     txtSoyad.Text = "bin Zülfikar";
                     txtMail.Text = "zulf@gmail.com";
-                    txtTelefon.Text = "45676699054";
+                    txtTelefon.Text = "55676699054";
                     txtTCKN.Text = "12111448793";
                     break;
                 default:
@@ -406,6 +420,9 @@ namespace HastaneOtomasyonu
         {
             dtpMuayene.Enabled = true;
         }
+
+        Button btn;
+        DateTime muayeneSaati = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 9, 0, 0);
 
         private void cbDoktorSec_SelectedIndexChanged(object sender, EventArgs e)
         {
