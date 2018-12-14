@@ -21,7 +21,7 @@ namespace HastaneOtomasyonu.Lib
         {
             Doktor doktor = new Doktor();
             Hemsire hemsire = new Hemsire();
-            hemsire.hBrans = doktor.DBrans.ToString();
+            hemsire.HBrans = doktor.DBrans;
             Hemsireler.Add(hemsire);
         }
 
