@@ -57,7 +57,7 @@ namespace HastaneOtomasyonu
                     if (kisi is Hasta)
                         lstKisiler.Items.Add(kisi);
                 }
-                
+
 
             }
             else if (toolStripComboBox1.SelectedIndex == 1)
@@ -99,7 +99,7 @@ namespace HastaneOtomasyonu
 
         private void FormuTemizle()
         {
-            
+
             foreach (Control control in this.Controls)
             {
                 if (control is GroupBox groupBox)
@@ -114,6 +114,14 @@ namespace HastaneOtomasyonu
                             (gbControl as CheckBox).Checked = false;
                     }
                 }
+                else if (control is FlowLayoutPanel flowLayoutPanel)
+                {
+                    foreach (Control flpControl in flowLayoutPanel.Controls)
+                    {
+                        //if (flpControl is Button) flpControl.Enabled = false;
+                    }
+                }
+
                 lstKisiler.Items.Clear();
             }
         }
@@ -171,7 +179,7 @@ namespace HastaneOtomasyonu
                 yeniKisi.Telefon = txtTelefon.Text;
                 yeniKisi.TCKN = txtTCKN.Text;
 
-                foreach(Kisi kisi in kisiler)
+                foreach (Kisi kisi in kisiler)
                 {
                     if (yeniKisi.TCKN == kisi.TCKN)
                         throw new Exception("Aynı kişiyi tekrar giremezsiniz.");
@@ -280,6 +288,12 @@ namespace HastaneOtomasyonu
         private void cbServisSec_SelectedIndexChanged(object sender, EventArgs e)
         {
             cbDoktorSec.Enabled = true;
+            foreach (Doktor doktor in kisiler)
+            {
+                if ((int)doktor.DBrans == cbServisSec.SelectedIndex)
+                    cbDoktorSec.Items.Add(doktor);
+
+            }
         }
 
         private void cbHemsireSec_SelectedIndexChanged(object sender, EventArgs e)
@@ -297,13 +311,13 @@ namespace HastaneOtomasyonu
             for (int i = 0; i < 28; i++)
             {
                 btn = new Button();
-                btn.Size = new Size(flpMuayene.Size.Width / 5, (flpMuayene.Size.Height-10) / 8);
+                btn.Size = new Size(flpMuayene.Size.Width / 5, (flpMuayene.Size.Height - 10) / 8);
                 btn.FlatStyle = FlatStyle.Popup;
                 btn.Text = muayeneSaati.ToShortTimeString();
 
-                if (muayeneSaati.ToShortTimeString().ToString()=="11:45") muayeneSaati = muayeneSaati.AddHours(1);
+                if (muayeneSaati.ToShortTimeString().ToString() == "11:45") muayeneSaati = muayeneSaati.AddHours(1);
 
-                kontrol=TimeSpan.Compare(muayeneSaati.TimeOfDay, DateTime.Now.TimeOfDay);
+                kontrol = TimeSpan.Compare(muayeneSaati.TimeOfDay, DateTime.Now.TimeOfDay);
 
                 if (kontrol == -1) btn.Enabled = false;
 
