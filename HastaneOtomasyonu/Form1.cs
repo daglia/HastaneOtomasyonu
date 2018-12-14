@@ -355,7 +355,7 @@ namespace HastaneOtomasyonu
                     txtAd.Text = "Haikutolos";
                     txtSoyad.Text = "Karagozis";
                     txtMail.Text = "haiku@gmail.com";
-                    txtTelefon.Text = "45637699054";
+                    txtTelefon.Text = "55637699054";
                     txtTCKN.Text = "12111778793";
                     break;
                 case 15:
@@ -413,16 +413,12 @@ namespace HastaneOtomasyonu
             cbHemsireSec.Enabled = true;
             Button btn;
             DateTime muayeneSaati = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 9, 0, 0);
-            int kontrol;
-
-            
+            int kontrolSaat;
 
             cbHemsireSec.Items.Clear();
             foreach (Kisi kisi in kisiler)
                 if (kisi is Hemsire hemsire && cbServisSec.SelectedIndex == (int)hemsire.HBrans)
                     cbHemsireSec.Items.Add(hemsire);
-
-
 
             for (int i = 0; i < 28; i++)
             {
@@ -433,9 +429,13 @@ namespace HastaneOtomasyonu
 
                 if (muayeneSaati.ToShortTimeString().ToString() == "11:45") muayeneSaati = muayeneSaati.AddHours(1);
 
-                kontrol = TimeSpan.Compare(muayeneSaati.TimeOfDay, DateTime.Now.TimeOfDay);
+                if (dtpMuayene.Value.DayOfYear > muayeneSaati.DayOfYear) btn.Enabled = true;
 
-                if (kontrol == -1) btn.Enabled = false;
+                else
+                {
+                    kontrolSaat = TimeSpan.Compare(muayeneSaati.TimeOfDay, DateTime.Now.TimeOfDay);
+                    if (kontrolSaat == -1) btn.Enabled = false;
+                }
 
                 muayeneSaati = muayeneSaati.AddMinutes(15);
 
@@ -481,6 +481,8 @@ namespace HastaneOtomasyonu
         private void dtpMuayene_ValueChanged(object sender, EventArgs e)
         {
             flpMuayene.Visible = true;
+
+
         }
     }
 }
