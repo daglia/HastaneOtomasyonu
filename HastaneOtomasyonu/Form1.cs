@@ -275,11 +275,11 @@ namespace HastaneOtomasyonu
             for (int i = 0; i < 28; i++)
             {
                 btn = new Button();
-                btn.Size = new Size(flpMuayene.Size.Width / 5, flpMuayene.Size.Height / 8);
+                btn.Size = new Size(flpMuayene.Size.Width / 5, (flpMuayene.Size.Height-10) / 8);
                 btn.FlatStyle = FlatStyle.Popup;
                 btn.Text = muayeneSaati.ToShortTimeString();
 
-                if (muayeneSaati.ToShortTimeString().ToString()=="12:00") muayeneSaati = muayeneSaati.AddHours(1);
+                if (muayeneSaati.ToShortTimeString().ToString()=="11:45") muayeneSaati = muayeneSaati.AddHours(1);
 
                 kontrol=TimeSpan.Compare(muayeneSaati.TimeOfDay, DateTime.Now.TimeOfDay);
 

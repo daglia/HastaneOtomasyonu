@@ -43,7 +43,6 @@
             this.gbMuayene = new System.Windows.Forms.GroupBox();
             this.flpMuayene = new System.Windows.Forms.FlowLayoutPanel();
             this.dtpMuayene = new System.Windows.Forms.DateTimePicker();
-            this.label7 = new System.Windows.Forms.Label();
             this.cbHemsireSec = new System.Windows.Forms.ComboBox();
             this.cbDoktorSec = new System.Windows.Forms.ComboBox();
             this.cbServisSec = new System.Windows.Forms.ComboBox();
@@ -97,7 +96,8 @@
             this.toolStripComboBox1});
             this.msIslemler.Location = new System.Drawing.Point(0, 0);
             this.msIslemler.Name = "msIslemler";
-            this.msIslemler.Size = new System.Drawing.Size(681, 27);
+            this.msIslemler.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
+            this.msIslemler.Size = new System.Drawing.Size(1045, 32);
             this.msIslemler.TabIndex = 1;
             this.msIslemler.Text = "menuStrip1";
             // 
@@ -107,7 +107,7 @@
             this.içeriAktarToolStripMenuItem,
             this.dışarıAktarToolStripMenuItem});
             this.dosyaToolStripMenuItem.Name = "dosyaToolStripMenuItem";
-            this.dosyaToolStripMenuItem.Size = new System.Drawing.Size(51, 23);
+            this.dosyaToolStripMenuItem.Size = new System.Drawing.Size(62, 28);
             this.dosyaToolStripMenuItem.Text = "Dosya";
             // 
             // içeriAktarToolStripMenuItem
@@ -116,20 +116,20 @@
             this.xMLOlarakAktarToolStripMenuItem,
             this.jSONOlarakAktarToolStripMenuItem});
             this.içeriAktarToolStripMenuItem.Name = "içeriAktarToolStripMenuItem";
-            this.içeriAktarToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.içeriAktarToolStripMenuItem.Size = new System.Drawing.Size(161, 26);
             this.içeriAktarToolStripMenuItem.Text = "İçeri Aktar";
             // 
             // xMLOlarakAktarToolStripMenuItem
             // 
             this.xMLOlarakAktarToolStripMenuItem.Name = "xMLOlarakAktarToolStripMenuItem";
-            this.xMLOlarakAktarToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.xMLOlarakAktarToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
             this.xMLOlarakAktarToolStripMenuItem.Text = "XML olarak aktar";
             this.xMLOlarakAktarToolStripMenuItem.Click += new System.EventHandler(this.xMLOlarakAktarToolStripMenuItem_Click);
             // 
             // jSONOlarakAktarToolStripMenuItem
             // 
             this.jSONOlarakAktarToolStripMenuItem.Name = "jSONOlarakAktarToolStripMenuItem";
-            this.jSONOlarakAktarToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.jSONOlarakAktarToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
             this.jSONOlarakAktarToolStripMenuItem.Text = "JSON olarak aktar";
             this.jSONOlarakAktarToolStripMenuItem.Click += new System.EventHandler(this.jSONOlarakAktarToolStripMenuItem_Click);
             // 
@@ -139,20 +139,20 @@
             this.xMLOlarakAktarToolStripMenuItem1,
             this.jSONOlarakAktarToolStripMenuItem1});
             this.dışarıAktarToolStripMenuItem.Name = "dışarıAktarToolStripMenuItem";
-            this.dışarıAktarToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.dışarıAktarToolStripMenuItem.Size = new System.Drawing.Size(161, 26);
             this.dışarıAktarToolStripMenuItem.Text = "Dışarı Aktar";
             // 
             // xMLOlarakAktarToolStripMenuItem1
             // 
             this.xMLOlarakAktarToolStripMenuItem1.Name = "xMLOlarakAktarToolStripMenuItem1";
-            this.xMLOlarakAktarToolStripMenuItem1.Size = new System.Drawing.Size(166, 22);
+            this.xMLOlarakAktarToolStripMenuItem1.Size = new System.Drawing.Size(201, 26);
             this.xMLOlarakAktarToolStripMenuItem1.Text = "XML olarak aktar";
             this.xMLOlarakAktarToolStripMenuItem1.Click += new System.EventHandler(this.xMLOlarakAktarToolStripMenuItem1_Click);
             // 
             // jSONOlarakAktarToolStripMenuItem1
             // 
             this.jSONOlarakAktarToolStripMenuItem1.Name = "jSONOlarakAktarToolStripMenuItem1";
-            this.jSONOlarakAktarToolStripMenuItem1.Size = new System.Drawing.Size(166, 22);
+            this.jSONOlarakAktarToolStripMenuItem1.Size = new System.Drawing.Size(201, 26);
             this.jSONOlarakAktarToolStripMenuItem1.Text = "JSON olarak aktar";
             this.jSONOlarakAktarToolStripMenuItem1.Click += new System.EventHandler(this.jSONOlarakAktarToolStripMenuItem1_Click);
             // 
@@ -163,16 +163,16 @@
             "Hasta İşlemleri",
             "Çalışan İşlemleri"});
             this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 23);
+            this.toolStripComboBox1.Size = new System.Drawing.Size(160, 28);
             this.toolStripComboBox1.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBox1_SelectedIndexChanged);
             // 
             // btnHastaGuncelle
             // 
             this.btnHastaGuncelle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnHastaGuncelle.Location = new System.Drawing.Point(173, 424);
+            this.btnHastaGuncelle.Location = new System.Drawing.Point(231, 444);
             this.btnHastaGuncelle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnHastaGuncelle.Name = "btnHastaGuncelle";
-            this.btnHastaGuncelle.Size = new System.Drawing.Size(79, 34);
+            this.btnHastaGuncelle.Size = new System.Drawing.Size(105, 42);
             this.btnHastaGuncelle.TabIndex = 13;
             this.btnHastaGuncelle.Text = "Güncelle";
             this.btnHastaGuncelle.UseVisualStyleBackColor = true;
@@ -181,10 +181,10 @@
             // btnSil
             // 
             this.btnSil.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSil.Location = new System.Drawing.Point(247, 424);
+            this.btnSil.Location = new System.Drawing.Point(314, 445);
             this.btnSil.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSil.Name = "btnSil";
-            this.btnSil.Size = new System.Drawing.Size(79, 34);
+            this.btnSil.Size = new System.Drawing.Size(105, 42);
             this.btnSil.TabIndex = 12;
             this.btnSil.Text = "Sil";
             this.btnSil.UseVisualStyleBackColor = true;
@@ -193,10 +193,10 @@
             // btnEkle
             // 
             this.btnEkle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnEkle.Location = new System.Drawing.Point(173, 392);
+            this.btnEkle.Location = new System.Drawing.Point(231, 408);
             this.btnEkle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnEkle.Name = "btnEkle";
-            this.btnEkle.Size = new System.Drawing.Size(177, 32);
+            this.btnEkle.Size = new System.Drawing.Size(162, 32);
             this.btnEkle.TabIndex = 11;
             this.btnEkle.Text = "Ekle";
             this.btnEkle.UseVisualStyleBackColor = true;
@@ -204,54 +204,42 @@
             // 
             // gbMuayene
             // 
-            this.gbMuayene.Controls.Add(this.flpMuayene);
             this.gbMuayene.Controls.Add(this.dtpMuayene);
-            this.gbMuayene.Controls.Add(this.label7);
             this.gbMuayene.Controls.Add(this.cbHemsireSec);
             this.gbMuayene.Controls.Add(this.cbDoktorSec);
             this.gbMuayene.Controls.Add(this.cbServisSec);
-            this.gbMuayene.Location = new System.Drawing.Point(415, 59);
+            this.gbMuayene.Location = new System.Drawing.Point(445, 59);
             this.gbMuayene.Name = "gbMuayene";
             this.gbMuayene.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.gbMuayene.Size = new System.Drawing.Size(268, 339);
+            this.gbMuayene.Size = new System.Drawing.Size(302, 372);
             this.gbMuayene.TabIndex = 10;
             this.gbMuayene.TabStop = false;
             this.gbMuayene.Text = "Muayene İşlemleri";
             // 
             // flpMuayene
             // 
-            this.flpMuayene.Location = new System.Drawing.Point(0, 113);
+            this.flpMuayene.Location = new System.Drawing.Point(445, 182);
             this.flpMuayene.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.flpMuayene.Name = "flpMuayene";
-            this.flpMuayene.Size = new System.Drawing.Size(268, 226);
+            this.flpMuayene.Size = new System.Drawing.Size(302, 249);
             this.flpMuayene.TabIndex = 5;
             // 
             // dtpMuayene
             // 
             this.dtpMuayene.Enabled = false;
-            this.dtpMuayene.Location = new System.Drawing.Point(56, 97);
+            this.dtpMuayene.Location = new System.Drawing.Point(90, 99);
             this.dtpMuayene.MinDate = new System.DateTime(2018, 12, 12, 0, 0, 0, 0);
             this.dtpMuayene.Name = "dtpMuayene";
-            this.dtpMuayene.Size = new System.Drawing.Size(295, 20);
+            this.dtpMuayene.Size = new System.Drawing.Size(207, 20);
             this.dtpMuayene.TabIndex = 4;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(4, 100);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(321, 13);
-            this.label7.TabIndex = 3;
-            this.label7.Text = "Bütün seçimleri yaptığınızda muayene saatleri aşağıda yer alacaktır.";
             // 
             // cbHemsireSec
             // 
             this.cbHemsireSec.Enabled = false;
             this.cbHemsireSec.FormattingEnabled = true;
-            this.cbHemsireSec.Location = new System.Drawing.Point(56, 70);
+            this.cbHemsireSec.Location = new System.Drawing.Point(90, 72);
             this.cbHemsireSec.Name = "cbHemsireSec";
-            this.cbHemsireSec.Size = new System.Drawing.Size(295, 21);
+            this.cbHemsireSec.Size = new System.Drawing.Size(207, 21);
             this.cbHemsireSec.TabIndex = 2;
             this.cbHemsireSec.Text = "Hemşire Seçiniz";
             this.cbHemsireSec.SelectedIndexChanged += new System.EventHandler(this.cbHemsireSec_SelectedIndexChanged);
@@ -262,9 +250,9 @@
             this.cbDoktorSec.FormattingEnabled = true;
             this.cbDoktorSec.Items.AddRange(new object[] {
             "Kamil Başarır"});
-            this.cbDoktorSec.Location = new System.Drawing.Point(56, 44);
+            this.cbDoktorSec.Location = new System.Drawing.Point(90, 46);
             this.cbDoktorSec.Name = "cbDoktorSec";
-            this.cbDoktorSec.Size = new System.Drawing.Size(295, 21);
+            this.cbDoktorSec.Size = new System.Drawing.Size(207, 21);
             this.cbDoktorSec.TabIndex = 1;
             this.cbDoktorSec.Text = "Doktor Seçiniz";
             this.cbDoktorSec.SelectedIndexChanged += new System.EventHandler(this.cbDoktorSec_SelectedIndexChanged);
@@ -272,9 +260,9 @@
             // cbServisSec
             // 
             this.cbServisSec.FormattingEnabled = true;
-            this.cbServisSec.Location = new System.Drawing.Point(56, 17);
+            this.cbServisSec.Location = new System.Drawing.Point(90, 19);
             this.cbServisSec.Name = "cbServisSec";
-            this.cbServisSec.Size = new System.Drawing.Size(295, 21);
+            this.cbServisSec.Size = new System.Drawing.Size(207, 21);
             this.cbServisSec.TabIndex = 0;
             this.cbServisSec.Text = "Servis Seçiniz";
             this.cbServisSec.SelectedIndexChanged += new System.EventHandler(this.cbServisSec_SelectedIndexChanged);
@@ -392,7 +380,7 @@
             this.lstKisiler.FormattingEnabled = true;
             this.lstKisiler.Location = new System.Drawing.Point(12, 135);
             this.lstKisiler.Name = "lstKisiler";
-            this.lstKisiler.Size = new System.Drawing.Size(161, 342);
+            this.lstKisiler.Size = new System.Drawing.Size(213, 342);
             this.lstKisiler.TabIndex = 7;
             this.lstKisiler.SelectedIndexChanged += new System.EventHandler(this.lstKisiler_SelectedIndexChanged);
             // 
@@ -524,10 +512,10 @@
             // gbMuayeneBilgileri
             // 
             this.gbMuayeneBilgileri.Controls.Add(this.lblMuayeneBilgileri);
-            this.gbMuayeneBilgileri.Location = new System.Drawing.Point(310, 392);
+            this.gbMuayeneBilgileri.Location = new System.Drawing.Point(396, 436);
             this.gbMuayeneBilgileri.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.gbMuayeneBilgileri.Name = "gbMuayeneBilgileri";
-            this.gbMuayeneBilgileri.Size = new System.Drawing.Size(351, 74);
+            this.gbMuayeneBilgileri.Size = new System.Drawing.Size(351, 63);
             this.gbMuayeneBilgileri.TabIndex = 12;
             this.gbMuayeneBilgileri.TabStop = false;
             this.gbMuayeneBilgileri.Text = "Muayene Bilgileri";
@@ -599,7 +587,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(681, 462);
+            this.ClientSize = new System.Drawing.Size(759, 510);
+            this.Controls.Add(this.flpMuayene);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.gbMuayeneBilgileri);
             this.Controls.Add(this.lblAra);
@@ -620,7 +609,6 @@
             this.msIslemler.ResumeLayout(false);
             this.msIslemler.PerformLayout();
             this.gbMuayene.ResumeLayout(false);
-            this.gbMuayene.PerformLayout();
             this.gbKisiBilgileri.ResumeLayout(false);
             this.gbKisiBilgileri.PerformLayout();
             this.gbEkBilgiler.ResumeLayout(false);
@@ -646,7 +634,6 @@
         private System.Windows.Forms.Button btnSil;
         private System.Windows.Forms.Button btnEkle;
         private System.Windows.Forms.GroupBox gbMuayene;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cbHemsireSec;
         private System.Windows.Forms.ComboBox cbDoktorSec;
         private System.Windows.Forms.ComboBox cbServisSec;
