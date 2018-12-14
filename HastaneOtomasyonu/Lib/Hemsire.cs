@@ -11,9 +11,6 @@ namespace HastaneOtomasyonu.Lib
         public Branslar HBrans { get; set; }
 
         public Hemsire() { }
-        public Hemsire(string ad, string soyad) : base(ad, soyad)
-        {
-        }
 
         public void MudahaleEt(Hasta hasta, DateTime mudahaleSaati)
         {

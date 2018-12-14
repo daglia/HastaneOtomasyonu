@@ -10,9 +10,7 @@ namespace HastaneOtomasyonu.Lib
     {
         public decimal _saatlikUcret;
         public Calisan() { }
-        public Calisan(string ad, string soyad) : base(ad, soyad)
-        {
-        }
+
         public decimal Tutar { get => _saatlikUcret * 8 * 20; }
         public decimal SaatlikUcret { set => _saatlikUcret = value; }
     }

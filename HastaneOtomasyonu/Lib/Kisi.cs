@@ -85,12 +85,6 @@ namespace HastaneOtomasyonu
 
         public Kisi() { }
 
-        public Kisi(string ad, string soyad)
-        {
-            this._ad = ad;
-            this._soyad = soyad;
-        }
-
         private void NameValid(string value, string propertyName)
         {
             foreach (char harf in propertyName)

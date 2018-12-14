@@ -12,10 +12,6 @@ namespace HastaneOtomasyonu.Lib
         public List<Hemsire> Hemsireler { get; set; } = new List<Hemsire>();
 
         public Doktor() { }
-        public Doktor(string ad, string soyad, Branslar dBrans) : base(ad, soyad)
-        {
-            this.DBrans = dBrans;
-        }
 
         public void MudahaleEt(Hasta hasta, DateTime mudahaleSaati)
         {

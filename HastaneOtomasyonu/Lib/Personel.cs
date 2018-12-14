@@ -10,9 +10,6 @@ namespace HastaneOtomasyonu.Lib
     {
         public Gorevler CGorev { get; set; }
         public Personel() { }
-        public Personel(string ad, string soyad, Gorevler cGorev) : base(ad, soyad)
-        {
-            this.CGorev = cGorev;
-        }
+
     }
 }

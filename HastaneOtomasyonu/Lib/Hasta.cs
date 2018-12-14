@@ -11,8 +11,6 @@ namespace HastaneOtomasyonu.Lib
         public Hasta()
         {
         }
-        public Hasta(string ad, string soyad) : base(ad, soyad)
-        {
-        }
+
     }
 }

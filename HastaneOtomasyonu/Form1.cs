@@ -166,16 +166,17 @@ namespace HastaneOtomasyonu
 
         private void btnEkle_Click(object sender, EventArgs e)
         {
-
+            //boş ctor tanımları yaptık programda hata alırsak tekrar dolu ctor oluştrup burada ona göre instance alınabilir örnek olması açısından bir tanesini burada bırakıyorum 
             if (toolStripComboBox1.SelectedIndex == 0) //Hasta
             {
-                yeniKisi = new Hasta(txtAd.Text, txtSoyad.Text);
+                //yeniKisi = new Hasta(txtAd.Text, txtSoyad.Text);
+                yeniKisi = new Hasta();
             }
             else if (toolStripComboBox1.SelectedIndex == 1) //Calışan
             {
                 if (cbGorev.SelectedIndex == 0) //Doktor
                 {
-                    yeniKisi = new Doktor(txtAd.Text, txtSoyad.Text, (Branslar)cbBrans.SelectedItem);
+                    yeniKisi = new Doktor();
 
                 }
                 else if (cbGorev.SelectedIndex == 1) //Hemşire
@@ -184,7 +185,7 @@ namespace HastaneOtomasyonu
                 }
                 else if (cbGorev.SelectedIndex == 2) //Personel
                 {
-                    yeniKisi = new Personel(txtAd.Text, txtSoyad.Text, (Gorevler)cbBrans.SelectedItem);
+                    yeniKisi = new Personel();
                 }
             }
 
@@ -421,9 +422,6 @@ namespace HastaneOtomasyonu
             dtpMuayene.Enabled = true;
         }
 
-        Button btn;
-        DateTime muayeneSaati = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 9, 0, 0);
-
         private void cbDoktorSec_SelectedIndexChanged(object sender, EventArgs e)
         {
             flpMuayene.Visible = false;
@@ -444,9 +442,9 @@ namespace HastaneOtomasyonu
                 btn.FlatStyle = FlatStyle.Popup;
                 btn.Text = muayeneSaati.ToShortTimeString();
 
-                if (muayeneSaati.ToShortTimeString().ToString() == "11:45") muayeneSaati = muayeneSaati.AddHours(1);
+                if (muayeneSaati.ToShortTimeString() == "11:45") muayeneSaati = muayeneSaati.AddHours(1);
 
-                if (dtpMuayene.Value.DayOfYear > muayeneSaati.DayOfYear) btn.Enabled = true;
+                if (dtpMuayene.Value.DayOfYear > DateTime.Now.DayOfYear) btn.Enabled = true;
 
                 else
                 {
