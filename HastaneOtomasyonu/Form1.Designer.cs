@@ -97,7 +97,7 @@
             this.toolStripComboBox1});
             this.msIslemler.Location = new System.Drawing.Point(0, 0);
             this.msIslemler.Name = "msIslemler";
-            this.msIslemler.Size = new System.Drawing.Size(588, 27);
+            this.msIslemler.Size = new System.Drawing.Size(681, 27);
             this.msIslemler.TabIndex = 1;
             this.msIslemler.Text = "menuStrip1";
             // 
@@ -599,7 +599,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(588, 462);
+            this.ClientSize = new System.Drawing.Size(681, 462);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.gbMuayeneBilgileri);
             this.Controls.Add(this.lblAra);
