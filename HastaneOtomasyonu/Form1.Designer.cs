@@ -96,7 +96,8 @@
             this.toolStripComboBox1});
             this.msIslemler.Location = new System.Drawing.Point(0, 0);
             this.msIslemler.Name = "msIslemler";
-            this.msIslemler.Size = new System.Drawing.Size(759, 27);
+            this.msIslemler.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
+            this.msIslemler.Size = new System.Drawing.Size(1045, 32);
             this.msIslemler.TabIndex = 1;
             this.msIslemler.Text = "menuStrip1";
             // 
@@ -106,7 +107,7 @@
             this.içeriAktarToolStripMenuItem,
             this.dışarıAktarToolStripMenuItem});
             this.dosyaToolStripMenuItem.Name = "dosyaToolStripMenuItem";
-            this.dosyaToolStripMenuItem.Size = new System.Drawing.Size(51, 23);
+            this.dosyaToolStripMenuItem.Size = new System.Drawing.Size(62, 28);
             this.dosyaToolStripMenuItem.Text = "Dosya";
             // 
             // içeriAktarToolStripMenuItem
@@ -115,20 +116,20 @@
             this.xMLOlarakAktarToolStripMenuItem,
             this.jSONOlarakAktarToolStripMenuItem});
             this.içeriAktarToolStripMenuItem.Name = "içeriAktarToolStripMenuItem";
-            this.içeriAktarToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.içeriAktarToolStripMenuItem.Size = new System.Drawing.Size(161, 26);
             this.içeriAktarToolStripMenuItem.Text = "İçeri Aktar";
             // 
             // xMLOlarakAktarToolStripMenuItem
             // 
             this.xMLOlarakAktarToolStripMenuItem.Name = "xMLOlarakAktarToolStripMenuItem";
-            this.xMLOlarakAktarToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.xMLOlarakAktarToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
             this.xMLOlarakAktarToolStripMenuItem.Text = "XML olarak aktar";
             this.xMLOlarakAktarToolStripMenuItem.Click += new System.EventHandler(this.xMLOlarakAktarToolStripMenuItem_Click);
             // 
             // jSONOlarakAktarToolStripMenuItem
             // 
             this.jSONOlarakAktarToolStripMenuItem.Name = "jSONOlarakAktarToolStripMenuItem";
-            this.jSONOlarakAktarToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.jSONOlarakAktarToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
             this.jSONOlarakAktarToolStripMenuItem.Text = "JSON olarak aktar";
             this.jSONOlarakAktarToolStripMenuItem.Click += new System.EventHandler(this.jSONOlarakAktarToolStripMenuItem_Click);
             // 
@@ -138,20 +139,20 @@
             this.xMLOlarakAktarToolStripMenuItem1,
             this.jSONOlarakAktarToolStripMenuItem1});
             this.dışarıAktarToolStripMenuItem.Name = "dışarıAktarToolStripMenuItem";
-            this.dışarıAktarToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.dışarıAktarToolStripMenuItem.Size = new System.Drawing.Size(161, 26);
             this.dışarıAktarToolStripMenuItem.Text = "Dışarı Aktar";
             // 
             // xMLOlarakAktarToolStripMenuItem1
             // 
             this.xMLOlarakAktarToolStripMenuItem1.Name = "xMLOlarakAktarToolStripMenuItem1";
-            this.xMLOlarakAktarToolStripMenuItem1.Size = new System.Drawing.Size(166, 22);
+            this.xMLOlarakAktarToolStripMenuItem1.Size = new System.Drawing.Size(201, 26);
             this.xMLOlarakAktarToolStripMenuItem1.Text = "XML olarak aktar";
             this.xMLOlarakAktarToolStripMenuItem1.Click += new System.EventHandler(this.xMLOlarakAktarToolStripMenuItem1_Click);
             // 
             // jSONOlarakAktarToolStripMenuItem1
             // 
             this.jSONOlarakAktarToolStripMenuItem1.Name = "jSONOlarakAktarToolStripMenuItem1";
-            this.jSONOlarakAktarToolStripMenuItem1.Size = new System.Drawing.Size(166, 22);
+            this.jSONOlarakAktarToolStripMenuItem1.Size = new System.Drawing.Size(201, 26);
             this.jSONOlarakAktarToolStripMenuItem1.Text = "JSON olarak aktar";
             this.jSONOlarakAktarToolStripMenuItem1.Click += new System.EventHandler(this.jSONOlarakAktarToolStripMenuItem1_Click);
             // 
@@ -162,7 +163,7 @@
             "Hasta İşlemleri",
             "Çalışan İşlemleri"});
             this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 23);
+            this.toolStripComboBox1.Size = new System.Drawing.Size(160, 28);
             this.toolStripComboBox1.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBox1_SelectedIndexChanged);
             // 
             // btnHastaGuncelle
@@ -171,7 +172,7 @@
             this.btnHastaGuncelle.Location = new System.Drawing.Point(231, 444);
             this.btnHastaGuncelle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnHastaGuncelle.Name = "btnHastaGuncelle";
-            this.btnHastaGuncelle.Size = new System.Drawing.Size(79, 34);
+            this.btnHastaGuncelle.Size = new System.Drawing.Size(105, 42);
             this.btnHastaGuncelle.TabIndex = 13;
             this.btnHastaGuncelle.Text = "Güncelle";
             this.btnHastaGuncelle.UseVisualStyleBackColor = true;
@@ -183,7 +184,7 @@
             this.btnSil.Location = new System.Drawing.Point(314, 445);
             this.btnSil.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSil.Name = "btnSil";
-            this.btnSil.Size = new System.Drawing.Size(79, 34);
+            this.btnSil.Size = new System.Drawing.Size(105, 42);
             this.btnSil.TabIndex = 12;
             this.btnSil.Text = "Sil";
             this.btnSil.UseVisualStyleBackColor = true;
