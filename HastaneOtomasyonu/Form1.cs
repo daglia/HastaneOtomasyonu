@@ -32,6 +32,8 @@ namespace HastaneOtomasyonu
             cbDoktorSec.Enabled = false;
             cbServisSec.Text = "Servis Seçiniz";
             dtpMuayene.MinDate = DateTime.Now;
+
+            
         }
 
         private void toolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -152,10 +154,12 @@ namespace HastaneOtomasyonu
                 if (cbGorev.SelectedIndex == 0) //Doktor
                 {
                     yeniKisi = new Doktor(txtAd.Text, txtSoyad.Text, (Branslar)cbBrans.SelectedItem);
+                    cbDoktorSec.Items.Add(yeniKisi);
                 }
                 else if (cbGorev.SelectedIndex == 1) //Hemşire
                 {
                     yeniKisi = new Hemsire();
+                    cbHemsireSec.Items.Add(yeniKisi);
                 }
                 else if (cbGorev.SelectedIndex == 2) //Personel
                 {
