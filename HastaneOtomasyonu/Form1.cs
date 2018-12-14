@@ -250,7 +250,7 @@ namespace HastaneOtomasyonu
         private void button1_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
-            int sayi = rnd.Next(0, 3);
+            int sayi = rnd.Next(0, 16);
 
             switch (sayi)
             {
@@ -274,6 +274,97 @@ namespace HastaneOtomasyonu
                     txtMail.Text = "gozdilloanaguro@gmail.com";
                     txtTelefon.Text = "51287694590";
                     txtTCKN.Text = "12345679351";
+                    break;
+                case 3:
+                    txtAd.Text = "Mässuht";
+                    txtSoyad.Text = "Özjorgen";
+                    txtMail.Text = "massuhtozjorgen@gmail.com";
+                    txtTelefon.Text = "50907694590";
+                    txtTCKN.Text = "12786547351";
+                    break;
+                case 4:
+                    txtAd.Text = "İsmailov";
+                    txtSoyad.Text = "Çadırov";
+                    txtMail.Text = "ismailovcadirov@gmail.com";
+                    txtTelefon.Text = "53597694590";
+                    txtTCKN.Text = "12786747651";
+                    break;
+                case 5:
+                    txtAd.Text = "Samuel";
+                    txtSoyad.Text = "Allabellabolla";
+                    txtMail.Text = "ismailovcadirov@gmail.com";
+                    txtTelefon.Text = "53547694490";
+                    txtTCKN.Text = "82786547651";
+                    break;
+                case 6:
+                    txtAd.Text = "Federico";
+                    txtSoyad.Text = "Hancherro";
+                    txtMail.Text = "federicohancherro@gmail.com";
+                    txtTelefon.Text = "53587691290";
+                    txtTCKN.Text = "32786907651";
+                    break;
+                case 7:
+                    txtAd.Text = "Kubirico";
+                    txtSoyad.Text = "Iazzolla";
+                    txtMail.Text = "kubirico.iazaolla@gmail.com";
+                    txtTelefon.Text = "53587694590";
+                    txtTCKN.Text = "12786907659";
+                    break;
+                case 8:
+                    txtAd.Text = "Bourrau";
+                    txtSoyad.Text = "Courman";
+                    txtMail.Text = "bourraucourman@gmail.com";
+                    txtTelefon.Text = "52887694590";
+                    txtTCKN.Text = "12703467659";
+                    break;
+                case 9:
+                    txtAd.Text = "Emmanuel";
+                    txtSoyad.Text = "Chedouin";
+                    txtMail.Text = "emmanuelchedo@gmail.com";
+                    txtTelefon.Text = "52887696342";
+                    txtTCKN.Text = "12703460687";
+                    break;
+                case 10:
+                    txtAd.Text = "Mu Chan Chit";
+                    txtSoyad.Text = "Xe Ba";
+                    txtMail.Text = "xeba@gmail.com";
+                    txtTelefon.Text = "52887699054";
+                    txtTCKN.Text = "12703477787";
+                    break;
+                case 11:
+                    txtAd.Text = "Oswaldo";
+                    txtSoyad.Text = "Demrskiy";
+                    txtMail.Text = "xeba@gmail.com";
+                    txtTelefon.Text = "52887699054";
+                    txtTCKN.Text = "12703499087";
+                    break;
+                case 12:
+                    txtAd.Text = "Zhulova";
+                    txtSoyad.Text = "Rassov";
+                    txtMail.Text = "rassov@gmail.com";
+                    txtTelefon.Text = "59007699054";
+                    txtTCKN.Text = "12703477787";
+                    break;
+                case 13:
+                    txtAd.Text = "Shuqurro";
+                    txtSoyad.Text = "Toulosso";
+                    txtMail.Text = "shuq@gmail.com";
+                    txtTelefon.Text = "11007699054";
+                    txtTCKN.Text = "12111477787";
+                    break;
+                case 14:
+                    txtAd.Text = "Haikutolos";
+                    txtSoyad.Text = "Karagozis";
+                    txtMail.Text = "haiku@gmail.com";
+                    txtTelefon.Text = "45637699054";
+                    txtTCKN.Text = "12111778793";
+                    break;
+                case 15:
+                    txtAd.Text = "Fourkhan";
+                    txtSoyad.Text = "bin Zülfikar";
+                    txtMail.Text = "zulf@gmail.com";
+                    txtTelefon.Text = "45676699054";
+                    txtTCKN.Text = "12111448793";
                     break;
                 default:
                     break;
