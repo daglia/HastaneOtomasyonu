@@ -119,7 +119,7 @@ namespace HastaneOtomasyonu
                         else if (gbControl is ComboBox)
                         {
                             gbControl.ResetText();
-                            if (gbControl.Name == "cbServisSec") continue;
+                            if (!(gbControl.Name == "cbDoktorSec" || gbControl.Name == "cbHemsireSec" || gbControl.Name == "cbHemsireDoktor")) continue;
                             gbControl.Enabled = false;
                         }
                         else if (gbControl is DateTimePicker)
@@ -180,7 +180,6 @@ namespace HastaneOtomasyonu
                 else if (cbGorev.SelectedIndex == 1) //Hemşire
                 {
                     yeniKisi = new Hemsire();
-                    cbHemsireSec.Items.Add(yeniKisi);
                 }
                 else if (cbGorev.SelectedIndex == 2) //Personel
                 {
@@ -415,6 +414,15 @@ namespace HastaneOtomasyonu
             Button btn;
             DateTime muayeneSaati = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 9, 0, 0);
             int kontrol;
+
+            
+
+            cbHemsireSec.Items.Clear();
+            foreach (Kisi kisi in kisiler)
+                if (kisi is Hemsire hemsire && cbServisSec.SelectedIndex == (int)hemsire.HBrans)
+                    cbHemsireSec.Items.Add(hemsire);
+
+
 
             for (int i = 0; i < 28; i++)
             {
