@@ -162,7 +162,7 @@ namespace HastaneOtomasyonu
                 if (cbGorev.SelectedIndex == 0) //Doktor
                 {
                     yeniKisi = new Doktor(txtAd.Text, txtSoyad.Text, (Branslar)cbBrans.SelectedItem);
-                    cbDoktorSec.Items.Add(yeniKisi);
+                    
                 }
                 else if (cbGorev.SelectedIndex == 1) //Hemşire
                 {
@@ -292,12 +292,7 @@ namespace HastaneOtomasyonu
         private void cbServisSec_SelectedIndexChanged(object sender, EventArgs e)
         {
             cbDoktorSec.Enabled = true;
-            foreach (Doktor doktor in kisiler)
-            {
-                if ((int)doktor.DBrans == cbServisSec.SelectedIndex)
-                    cbDoktorSec.Items.Add(doktor);
 
-            }
         }
 
         private void cbHemsireSec_SelectedIndexChanged(object sender, EventArgs e)
@@ -307,6 +302,7 @@ namespace HastaneOtomasyonu
 
         private void cbDoktorSec_SelectedIndexChanged(object sender, EventArgs e)
         {
+            flpMuayene.Visible = false;
             cbHemsireSec.Enabled = true;
             Button btn;
             DateTime muayeneSaati = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 9, 0, 0);
@@ -329,21 +325,6 @@ namespace HastaneOtomasyonu
 
                 flpMuayene.Controls.Add(btn);
             }
-
-            //dtpMuayene.MinDate = DateTime.Now;
-
-            //DateTime saat = new DateTime(2018, 11, 26, 9, 0, 0);
-            //String muayeneSaati = saat.ToString("HH:mm");
-
-            //while (muayeneSaati != "16:30")
-            //{
-            //    Console.WriteLine(muayeneSaati);
-            //    saat = saat.AddMinutes(15);
-            //    muayeneSaati = saat.ToString("HH:mm");
-            //    if (muayeneSaati == "11:45")
-            //    {
-            //        saat = saat.AddMinutes(60);
-            //    }
 
         }
 
@@ -379,6 +360,11 @@ namespace HastaneOtomasyonu
                 cbGorev.SelectedIndex = 2;
                 cbBrans.SelectedItem = (Enum)personel.CGorev;
             }
+        }
+
+        private void dtpMuayene_ValueChanged(object sender, EventArgs e)
+        {
+            flpMuayene.Visible = true;
         }
     }
 }
