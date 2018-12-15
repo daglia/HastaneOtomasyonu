@@ -164,6 +164,23 @@ namespace HastaneOtomasyonu
 
         Kisi yeniKisi;
 
+        public void ListeGuncelle()
+        {
+            if (toolStripComboBox1.SelectedIndex == 0)
+                foreach (Kisi kisi in kisiler)
+                {
+                    if (kisi is Hasta)
+                        lstKisiler.Items.Add(kisi);
+                }
+            else if (toolStripComboBox1.SelectedIndex == 1)
+                foreach (Kisi kisi in kisiler)
+                {
+                    if (kisi is Calisan)
+                        lstKisiler.Items.Add(kisi);
+                }
+            lstKisiler.Sorted = true;
+        }
+
         private void btnEkle_Click(object sender, EventArgs e)
         {
             //boş ctor tanımları yaptık programda hata alırsak tekrar dolu ctor oluştrup burada ona göre instance alınabilir örnek olması açısından bir tanesini burada bırakıyorum 
@@ -177,7 +194,7 @@ namespace HastaneOtomasyonu
                 if (cbGorev.SelectedIndex == 0) //Doktor
                 {
                     yeniKisi = new Doktor();
-
+                    
                 }
                 else if (cbGorev.SelectedIndex == 1) //Hemşire
                 {
@@ -205,21 +222,8 @@ namespace HastaneOtomasyonu
 
                 kisiler.Add(yeniKisi);
 
-                //MessageBox.Show($"Hosgeldin {yeniKisi.Ad} {yeniKisi.Soyad}");
                 FormuTemizle();
-                if (toolStripComboBox1.SelectedIndex == 0)
-                    foreach (Kisi kisi in kisiler)
-                    {
-                        if (kisi is Hasta)
-                            lstKisiler.Items.Add(kisi);
-                    }
-                else if (toolStripComboBox1.SelectedIndex == 1)
-                    foreach (Kisi kisi in kisiler)
-                    {
-                        if (kisi is Calisan)
-                            lstKisiler.Items.Add(kisi);
-                    }
-                lstKisiler.Sorted = true;
+                ListeGuncelle();
             }
             catch (Exception ex)
             {
@@ -247,7 +251,7 @@ namespace HastaneOtomasyonu
             }
 
             FormuTemizle();
-            lstKisiler.Items.AddRange(kisiler.ToArray());
+            ListeGuncelle();
         }
 
         private void btnSil_Click(object sender, EventArgs e)
