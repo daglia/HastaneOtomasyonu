@@ -12,6 +12,19 @@ namespace HastaneOtomasyonu.Lib
         public Calisan() { }
 
         public decimal Tutar { get => _saatlikUcret * 8 * 20; }
-        public decimal SaatlikUcret { set => _saatlikUcret = value; }
+        public decimal SaatlikUcret
+        {
+            get
+            {
+                return _saatlikUcret;
+            }
+            set
+            {
+                if (value > 0)
+                    _saatlikUcret = value;
+                else
+                    throw new Exception("Girdiğiniz maaş bilgisi geçersizdir.");
+            }
+        }
     }
 }

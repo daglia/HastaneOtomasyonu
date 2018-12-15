@@ -214,13 +214,23 @@ namespace HastaneOtomasyonu
                 yeniKisi.TCKN = txtTCKN.Text;
 
                 if (yeniKisi is Doktor doktor)
+                {
+                    doktor.SaatlikUcret = decimal.Parse(txtSaatlikUcret.Text);
                     doktor.DBrans = (Branslar)cbBrans.SelectedItem;
+                }
 
                 else if (yeniKisi is Hemsire hemsire)
+                {
+                    hemsire.SaatlikUcret = decimal.Parse(txtSaatlikUcret.Text);
                     hemsire.HBrans = (Branslar)cbBrans.SelectedItem;
-
+                }
+                    
                 else if (yeniKisi is Personel personel)
+                {
+                    personel.SaatlikUcret = decimal.Parse(txtSaatlikUcret.Text);
                     personel.CGorev = (Gorevler)cbBrans.SelectedItem;
+                }
+                    
 
                 foreach (Kisi kisi in kisiler)
                 {
@@ -239,7 +249,7 @@ namespace HastaneOtomasyonu
             }
         }
 
-        private void btnHastaGuncelle_Click(object sender, EventArgs e)
+        private void btnGuncelle_Click(object sender, EventArgs e)
         {
             if (lstKisiler.SelectedItem == null) return;
 
@@ -252,6 +262,29 @@ namespace HastaneOtomasyonu
                 seciliKisi.TCKN = txtTCKN.Text;
                 seciliKisi.Telefon = txtTelefon.Text;
                 seciliKisi.email = txtMail.Text;
+
+                if(seciliKisi is Hasta hasta)
+                {
+                    //Muayene saati ve doktoru ile ilgili bir şeyler
+                }
+
+                else if (seciliKisi is Doktor doktor)
+                {
+                    doktor.SaatlikUcret = decimal.Parse(txtSaatlikUcret.Text);
+                    doktor.DBrans = (Branslar)cbBrans.SelectedItem;
+                }
+
+                else if (seciliKisi is Hemsire hemsire)
+                {
+                    hemsire.SaatlikUcret = decimal.Parse(txtSaatlikUcret.Text);
+                    hemsire.HBrans = (Branslar)cbBrans.SelectedItem;
+                }
+
+                else if (seciliKisi is Personel personel)
+                {
+                    personel.SaatlikUcret = decimal.Parse(txtSaatlikUcret.Text);
+                    personel.CGorev = (Gorevler)cbBrans.SelectedItem;
+                }
             }
             catch (Exception ex)
             {
@@ -270,7 +303,7 @@ namespace HastaneOtomasyonu
             kisiler.Remove(seciliKisi);
 
             FormuTemizle();
-            lstKisiler.Items.AddRange(kisiler.ToArray());
+            ListeGuncelle();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -465,6 +498,8 @@ namespace HastaneOtomasyonu
             txtTelefon.Text = seciliKisi.Telefon;
             txtTCKN.Text = seciliKisi.TCKN;
 
+            cbGorev.SelectedIndex = -1;
+
             if (seciliKisi is Hasta hasta)
             {
                 cbServisSec.Enabled = true;
@@ -473,18 +508,24 @@ namespace HastaneOtomasyonu
             {
                 cbGorev.SelectedIndex = 0;
                 cbBrans.SelectedItem = doktor.DBrans;
-                //txtSaatlikUcret.Text = doktor.SaatlikUcret.ToString();
+                txtSaatlikUcret.Text = doktor.SaatlikUcret.ToString();
+                txtMaas.Text = doktor.Tutar.ToString();
+                cbBrans.SelectedItem = doktor.DBrans;
             }
             else if (seciliKisi is Hemsire hemsire)
             {
                 cbGorev.SelectedIndex = 1;
                 cbBrans.SelectedItem = hemsire.HBrans;
-
+                txtSaatlikUcret.Text = hemsire.SaatlikUcret.ToString();
+                txtMaas.Text = hemsire.Tutar.ToString();
+                cbBrans.SelectedItem = hemsire.HBrans;
             }
             else if (seciliKisi is Personel personel)
             {
                 cbGorev.SelectedIndex = 2;
                 cbBrans.SelectedItem = personel.CGorev;
+                txtSaatlikUcret.Text = personel.SaatlikUcret.ToString();
+                txtMaas.Text = personel.Tutar.ToString();
             }
         }
 
