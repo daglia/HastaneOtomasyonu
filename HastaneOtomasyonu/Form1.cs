@@ -1,5 +1,6 @@
 ﻿using HastaneOtomasyonu.Lib;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -168,12 +169,50 @@ namespace HastaneOtomasyonu
 
         private void jSONOlarakAktarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            dosyaAc.Title = "Bir JSON dosyası seçiniz";
+            dosyaAc.Filter = "(JSON Dosyası) | *.json;";
+            dosyaAc.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            dosyaAc.FileName = "Kisiler.json";
 
+            if (dosyaAc.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    FileStream dosya = File.OpenRead(dosyaAc.FileName);
+                    StreamReader reader = new StreamReader(dosya);
+                    string dosyaIcerigi = reader.ReadToEnd();
+                    reader.Close();
+                    dosya.Close();
+
+                    var ja = JArray.Parse(dosyaIcerigi);
+
+                    foreach (JObject jo in ja)
+                    {
+                        if(jo.Property("$type").ToString() == "\"$type\": \"HastaneOtomasyonu.Lib.Hasta, HastaneOtomasyonu\"")
+                            kisiler.Add(jo.ToObject<Hasta>());
+                        else if (jo.Property("$type").ToString() == "\"$type\": \"HastaneOtomasyonu.Lib.Doktor, HastaneOtomasyonu\"")
+                            kisiler.Add(jo.ToObject<Doktor>());
+                        else if (jo.Property("$type").ToString() == "\"$type\": \"HastaneOtomasyonu.Lib.Hemsire, HastaneOtomasyonu\"")
+                            kisiler.Add(jo.ToObject<Hemsire>());
+                        else if (jo.Property("$type").ToString() == "\"$type\": \"HastaneOtomasyonu.Lib.Personel, HastaneOtomasyonu\"")
+                            kisiler.Add(jo.ToObject<Personel>());
+                    }
+
+                    MessageBox.Show($"{kisiler.Count} kişi sisteme başarıyla eklendi.");
+                    FormuTemizle();
+                    ListeGuncelle();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
         }
 
         private void xMLOlarakAktarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            dosyaKaydet.Title = "Dışarı XML olarak aktar";
+            dosyaKaydet.Title = "XML olarak kaydet";
             dosyaKaydet.Filter = "(XML Dosyası) | *.xml;";
             dosyaKaydet.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             dosyaKaydet.FileName = "Kisiler.xml";
@@ -191,7 +230,26 @@ namespace HastaneOtomasyonu
 
         private void jSONOlarakAktarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            dosyaKaydet.Title = "JSON olarak kaydet";
+            dosyaKaydet.Filter = "(JSON Dosyası) | *.json;";
+            dosyaKaydet.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            dosyaKaydet.FileName = "Kisiler.json";
 
+            var settings = new JsonSerializerSettings()
+            {
+                TypeNameHandling = TypeNameHandling.Auto
+            };
+
+            if (dosyaKaydet.ShowDialog() == DialogResult.OK)
+            {
+                FileStream file = File.Open(dosyaKaydet.FileName, FileMode.OpenOrCreate);
+                StreamWriter writer = new StreamWriter(file);
+
+                writer.Write(JsonConvert.SerializeObject(kisiler, settings));
+                writer.Close();
+                writer.Dispose();
+                MessageBox.Show($"JSON başarıyla dışa aktarıldı: {dosyaKaydet.FileName}");
+            }
         }
 
         Kisi yeniKisi;
