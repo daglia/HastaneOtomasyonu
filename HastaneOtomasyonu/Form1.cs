@@ -142,7 +142,27 @@ namespace HastaneOtomasyonu
 
         private void xMLOlarakAktarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            dosyaAc.Title = "Bir XML dosyası seçiniz";
+            dosyaAc.Filter = "(XML Dosyası) | *.xml;";
+            dosyaAc.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            dosyaAc.FileName = "Kisiler.xml";
 
+            if (dosyaAc.ShowDialog() == DialogResult.OK)
+            {
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Kisi>));
+                XmlReader reader = new XmlTextReader(dosyaAc.FileName);
+                if (xmlSerializer.CanDeserialize(reader))
+                {
+                    kisiler = xmlSerializer.Deserialize(reader) as List<Kisi>;
+                    MessageBox.Show($"{kisiler.Count} kişi sisteme başarıyla eklendi.");
+                    FormuTemizle();
+                    ListeGuncelle();
+                }
+                else
+                {
+                    MessageBox.Show("Lütfen bir XML dosyası seçin.");
+                }
+            }
         }
 
         private void jSONOlarakAktarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -152,7 +172,20 @@ namespace HastaneOtomasyonu
 
         private void xMLOlarakAktarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            dosyaKaydet.Title = "Dışarı XML olarak aktar";
+            dosyaKaydet.Filter = "(XML Dosyası) | *.xml;";
+            dosyaKaydet.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            dosyaKaydet.FileName = "Kisiler.xml";
 
+            if (dosyaKaydet.ShowDialog() == DialogResult.OK)
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(List<Kisi>));
+                TextWriter textWriter = new StreamWriter(dosyaKaydet.FileName);
+                serializer.Serialize(textWriter, kisiler); //Kisi class'ı public olmalı
+                textWriter.Close();
+                textWriter.Dispose();
+                MessageBox.Show($"XML başarıyla dışa aktarıldı: {dosyaKaydet.FileName}");
+            }
         }
 
         private void jSONOlarakAktarToolStripMenuItem1_Click(object sender, EventArgs e)
