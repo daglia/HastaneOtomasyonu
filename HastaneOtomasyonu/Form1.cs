@@ -192,7 +192,7 @@ namespace HastaneOtomasyonu
                 if (cbGorev.SelectedIndex == 0) //Doktor
                 {
                     yeniKisi = new Doktor();
-                    
+
                 }
                 else if (cbGorev.SelectedIndex == 1) //Hemşire
                 {
@@ -211,6 +211,15 @@ namespace HastaneOtomasyonu
                 yeniKisi.email = txtMail.Text;
                 yeniKisi.Telefon = txtTelefon.Text;
                 yeniKisi.TCKN = txtTCKN.Text;
+
+                if (yeniKisi is Doktor doktor)
+                    doktor.DBrans = (Branslar)cbBrans.SelectedItem;
+
+                else if (yeniKisi is Hemsire hemsire)
+                    hemsire.HBrans = (Branslar)cbBrans.SelectedItem;
+
+                else if (yeniKisi is Personel personel)
+                    personel.CGorev = (Gorevler)cbBrans.SelectedItem;
 
                 foreach (Kisi kisi in kisiler)
                 {
@@ -417,6 +426,8 @@ namespace HastaneOtomasyonu
 
         private void cbServisSec_SelectedIndexChanged(object sender, EventArgs e)
         {
+            cbDoktorSec.Text = "Doktor Seçiniz";
+            cbHemsireSec.Text = "Hemşire Seçiniz";
             cbDoktorSec.Items.Clear();
             cbDoktorSec.Enabled = true;
 
@@ -455,24 +466,24 @@ namespace HastaneOtomasyonu
 
             if (seciliKisi is Hasta hasta)
             {
-
+                cbServisSec.Enabled = true;
             }
             else if (seciliKisi is Doktor doktor)
             {
                 cbGorev.SelectedIndex = 0;
-                cbBrans.SelectedItem = (Enum)doktor.DBrans;
+                cbBrans.SelectedItem = doktor.DBrans;
                 //txtSaatlikUcret.Text = doktor.SaatlikUcret.ToString();
             }
             else if (seciliKisi is Hemsire hemsire)
             {
                 cbGorev.SelectedIndex = 1;
-                cbBrans.SelectedItem = (Enum)hemsire.HBrans;
+                cbBrans.SelectedItem = hemsire.HBrans;
 
             }
             else if (seciliKisi is Personel personel)
             {
                 cbGorev.SelectedIndex = 2;
-                cbBrans.SelectedItem = (Enum)personel.CGorev;
+                cbBrans.SelectedItem = personel.CGorev;
             }
         }
 
@@ -487,8 +498,8 @@ namespace HastaneOtomasyonu
             //valuechanged methodunda yapılmıyor en başta dtp set edildiği için direkt methoda giriyor ayrıca visible işlevlerini bozuyor
 
             Button btn;
-            //DateTime muayeneSaati = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 22, 0, 0);
-            DateTime muayeneSaati = new DateTime(dtpMuayene.Value.Year, dtpMuayene.Value.Month, dtpMuayene.Value.Day, 22, 0, 0);
+            //DateTime muayeneSaati = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 9, 0, 0);
+            DateTime muayeneSaati = new DateTime(dtpMuayene.Value.Year, dtpMuayene.Value.Month, dtpMuayene.Value.Day, 9, 0, 0);
             int kontrolSaat;
 
             for (int i = 0; i < 28; i++)
@@ -515,5 +526,7 @@ namespace HastaneOtomasyonu
                 flpMuayene.Controls.Add(btn);
             }
         }
+
+
     }
 }

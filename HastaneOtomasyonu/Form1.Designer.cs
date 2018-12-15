@@ -255,6 +255,7 @@
             // 
             // cbServisSec
             // 
+            this.cbServisSec.Enabled = false;
             this.cbServisSec.FormattingEnabled = true;
             this.cbServisSec.Location = new System.Drawing.Point(90, 19);
             this.cbServisSec.Name = "cbServisSec";
