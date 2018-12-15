@@ -235,7 +235,6 @@
             this.dtpMuayene.Size = new System.Drawing.Size(319, 22);
             this.dtpMuayene.TabIndex = 4;
             this.dtpMuayene.ValueChanged += new System.EventHandler(this.dtpMuayene_ValueChanged);
-            this.dtpMuayene.EnabledChanged += new System.EventHandler(this.dtpMuayene_EnabledChanged);
             // 
             // cbHemsireSec
             // 
