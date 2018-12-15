@@ -24,6 +24,7 @@ namespace HastaneOtomasyonu
 
         List<Kisi> kisiler = new List<Kisi>();
         List<Kisi> aramalar = new List<Kisi>();
+        List<Button> Butonlar = new List<Button>();
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -31,9 +32,6 @@ namespace HastaneOtomasyonu
             cbGorev.SelectedIndex = 0;
             cbDoktorSec.Enabled = false;
             cbServisSec.Text = "Servis Seçiniz";
-            dtpMuayene.MinDate = DateTime.Now;
-
-
         }
 
         private void toolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -45,8 +43,9 @@ namespace HastaneOtomasyonu
                 gbMuayene.Visible = true;
                 gbMuayeneBilgileri.Visible = true;
                 gbEkBilgiler.Visible = false;
-                if (dtpMuayene.Enabled == true)
-                    flpMuayene.Visible = true;
+                //kapattğım yerleri açmayın:D
+                //if (dtpMuayene.Enabled == true)
+                //    flpMuayene.Visible = true;
 
                 //Label işlemleri
 
@@ -194,7 +193,7 @@ namespace HastaneOtomasyonu
                 if (cbGorev.SelectedIndex == 0) //Doktor
                 {
                     yeniKisi = new Doktor();
-                    
+
                 }
                 else if (cbGorev.SelectedIndex == 1) //Hemşire
                 {
@@ -443,7 +442,7 @@ namespace HastaneOtomasyonu
                     cbHemsireSec.Items.Add(hemsire);
 
         }
-
+        DateTime muayeneSaati;
         private void lstKisiler_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lstKisiler.SelectedItem == null) return;
@@ -481,41 +480,66 @@ namespace HastaneOtomasyonu
         private void dtpMuayene_ValueChanged(object sender, EventArgs e)
         {
             flpMuayene.Visible = true;
-        }
-
-        private void dtpMuayene_EnabledChanged(object sender, EventArgs e)
-        {
-            //seçim işlemleri sırayla gittiğinden doktor seçince değil dtp enable olduğunda button oluşturulmalı
-            //valuechanged methodunda yapılmıyor en başta dtp set edildiği için direkt methoda giriyor ayrıca visible işlevlerini bozuyor
-
             Button btn;
-            //DateTime muayeneSaati = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 22, 0, 0);
-            DateTime muayeneSaati = new DateTime(dtpMuayene.Value.Year, dtpMuayene.Value.Month, dtpMuayene.Value.Day, 22, 0, 0);
-            int kontrolSaat;
 
-            for (int i = 0; i < 28; i++)
+            if (dtpMuayene.Value.Day == DateTime.Now.Day)
             {
-                btn = new Button();
-                btn.Size = new Size(flpMuayene.Size.Width / 5, (flpMuayene.Size.Height - 10) / 8);
-                btn.FlatStyle = FlatStyle.Popup;
-                btn.Text = muayeneSaati.ToShortTimeString();
-
-                if (muayeneSaati.ToShortTimeString() == "11:45") muayeneSaati = muayeneSaati.AddHours(1);
-
-                if (dtpMuayene.Value.DayOfYear > DateTime.Now.DayOfYear) btn.Enabled = true;
-                //if (dtpMuayene.Value.Date.CompareTo(DateTime.Now) > 0) btn.Enabled = true;
-                //aynı işlemi yapan başka bir method fikir vermesi için bakılabilir
-
-                else
+                MessageBox.Show("hello");
+                //seçim işlemleri sırayla gittiğinden doktor seçince değil dtp enable olduğunda button oluşturulmalı
+                //valuechanged methodunda yapılmıyor en başta dtp set edildiği için direkt methoda giriyor ayrıca visible işlevlerini bozuyor      
+                //DateTime muayeneSaati = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 22, 0, 0);
+                muayeneSaati = new DateTime(dtpMuayene.Value.Year, dtpMuayene.Value.Month, dtpMuayene.Value.Day, 9, 0, 0);
+                int kontrolSaat;
+                flpMuayene.Controls.Clear();
+                for (int i = 0; i < 28; i++)
                 {
-                    kontrolSaat = TimeSpan.Compare(muayeneSaati.TimeOfDay, DateTime.Now.TimeOfDay);
-                    if (kontrolSaat == -1) btn.Enabled = false;
+                    btn = new Button();
+                    btn.Size = new Size(flpMuayene.Size.Width / 5, (flpMuayene.Size.Height - 10) / 8);
+                    btn.FlatStyle = FlatStyle.Popup;
+                    btn.Text = muayeneSaati.ToShortTimeString();
+
+                    if (muayeneSaati.ToShortTimeString() == "11:45") muayeneSaati = muayeneSaati.AddHours(1);
+
+                    if (dtpMuayene.Value.DayOfYear > DateTime.Now.DayOfYear) btn.Enabled = true;
+                    //if (dtpMuayene.Value.Date.CompareTo(DateTime.Now) > 0) btn.Enabled = true;
+                    //aynı işlemi yapan başka bir method fikir vermesi için bakılabilir
+
+                    else
+                    {
+                        kontrolSaat = TimeSpan.Compare(muayeneSaati.TimeOfDay, DateTime.Now.TimeOfDay);
+                        if (kontrolSaat == -1) btn.Enabled = false;
+                    }
+
+                    muayeneSaati = muayeneSaati.AddMinutes(15);
+
+                    flpMuayene.Controls.Add(btn);
+                }
+            }
+            else
+            {
+                flpMuayene.Visible = true;
+                flpMuayene.Controls.Clear();
+                MessageBox.Show("gb");
+                for (int i = 0; i < 28; i++)
+                {
+                    btn = new Button();
+                    btn.Size = new Size(flpMuayene.Size.Width / 5, (flpMuayene.Size.Height - 10) / 8);
+                    btn.FlatStyle = FlatStyle.Popup;
+                    btn.Text = muayeneSaati.ToShortTimeString();
+
+                    if (muayeneSaati.ToShortTimeString() == "11:45") muayeneSaati = muayeneSaati.AddHours(1);
+
+                    btn.Enabled = true;
+                    muayeneSaati = muayeneSaati.AddMinutes(15);
+
+                    flpMuayene.Controls.Add(btn);
                 }
 
-                muayeneSaati = muayeneSaati.AddMinutes(15);
-
-                flpMuayene.Controls.Add(btn);
             }
+            //datetimepicker enable içinde doğru çalışmıyordu.
+            /*private void dtpMuayene_EnabledChanged(object sender, EventArgs e)
+            {
+            }*/
         }
     }
 }

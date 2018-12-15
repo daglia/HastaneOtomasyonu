@@ -204,7 +204,6 @@
             // 
             // gbMuayene
             // 
-            this.gbMuayene.Controls.Add(this.dtpMuayene);
             this.gbMuayene.Controls.Add(this.cbHemsireSec);
             this.gbMuayene.Controls.Add(this.cbDoktorSec);
             this.gbMuayene.Controls.Add(this.cbServisSec);
@@ -218,14 +217,13 @@
             // 
             // dtpMuayene
             // 
-            this.dtpMuayene.Enabled = false;
-            this.dtpMuayene.Location = new System.Drawing.Point(90, 99);
+            this.dtpMuayene.Location = new System.Drawing.Point(535, 34);
             this.dtpMuayene.MinDate = new System.DateTime(2018, 12, 12, 0, 0, 0, 0);
             this.dtpMuayene.Name = "dtpMuayene";
             this.dtpMuayene.Size = new System.Drawing.Size(207, 20);
             this.dtpMuayene.TabIndex = 4;
             this.dtpMuayene.ValueChanged += new System.EventHandler(this.dtpMuayene_ValueChanged);
-            this.dtpMuayene.EnabledChanged += new System.EventHandler(this.dtpMuayene_EnabledChanged);
+            this.dtpMuayene.EnabledChanged += new System.EventHandler(this.dtpMuayene_ValueChanged);
             // 
             // cbHemsireSec
             // 
@@ -592,6 +590,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(759, 510);
+            this.Controls.Add(this.dtpMuayene);
             this.Controls.Add(this.flpMuayene);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.gbMuayeneBilgileri);
