@@ -32,8 +32,6 @@ namespace HastaneOtomasyonu
             cbDoktorSec.Enabled = false;
             cbServisSec.Text = "Servis Seçiniz";
             dtpMuayene.MinDate = DateTime.Now;
-
-
         }
 
         private void toolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
