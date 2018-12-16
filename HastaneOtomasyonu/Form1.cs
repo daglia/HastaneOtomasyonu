@@ -620,7 +620,7 @@ namespace HastaneOtomasyonu
             }
         }
 
-        DateTime muayeneSaati;
+     
         private void dtpMuayene_ValueChanged(object sender, EventArgs e)
         {
             flpMuayene.Visible = true;
