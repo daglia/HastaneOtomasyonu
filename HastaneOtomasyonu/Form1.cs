@@ -26,11 +26,10 @@ namespace HastaneOtomasyonu
         List<Kisi> kisiler = new List<Kisi>();
         List<Kisi> aramalar = new List<Kisi>();
         List<Button> Butonlar = new List<Button>();
-        
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
             flpMuayene.Visible = false;
             toolStripComboBox1.SelectedIndex = 0;
             cbGorev.SelectedIndex = 0;
@@ -65,7 +64,6 @@ namespace HastaneOtomasyonu
                     if (kisi is Hasta)
                         lstKisiler.Items.Add(kisi);
                 }
-
 
             }
             else if (toolStripComboBox1.SelectedIndex == 1)
@@ -191,7 +189,7 @@ namespace HastaneOtomasyonu
 
                     foreach (JObject jo in ja)
                     {
-                        if(jo.Property("$type").ToString() == "\"$type\": \"HastaneOtomasyonu.Lib.Hasta, HastaneOtomasyonu\"")
+                        if (jo.Property("$type").ToString() == "\"$type\": \"HastaneOtomasyonu.Lib.Hasta, HastaneOtomasyonu\"")
                             kisiler.Add(jo.ToObject<Hasta>());
                         else if (jo.Property("$type").ToString() == "\"$type\": \"HastaneOtomasyonu.Lib.Doktor, HastaneOtomasyonu\"")
                             kisiler.Add(jo.ToObject<Doktor>());
@@ -318,13 +316,13 @@ namespace HastaneOtomasyonu
                     hemsire.SaatlikUcret = decimal.Parse(txtSaatlikUcret.Text);
                     hemsire.HBrans = (Branslar)cbBrans.SelectedItem;
                 }
-                    
+
                 else if (yeniKisi is Personel personel)
                 {
                     personel.SaatlikUcret = decimal.Parse(txtSaatlikUcret.Text);
                     personel.CGorev = (Gorevler)cbBrans.SelectedItem;
                 }
-                    
+
 
                 foreach (Kisi kisi in kisiler)
                 {
@@ -357,7 +355,7 @@ namespace HastaneOtomasyonu
                 seciliKisi.Telefon = txtTelefon.Text;
                 seciliKisi.email = txtMail.Text;
 
-                if(seciliKisi is Hasta hasta)
+                if (seciliKisi is Hasta hasta)
                 {
                     //Muayene saati ve doktoru ile ilgili bir şeyler
                 }
@@ -570,7 +568,7 @@ namespace HastaneOtomasyonu
         {
             dtpMuayene.Enabled = true;
             flpMuayene.Enabled = true;
-            
+
             flpMuayene.Visible = true;
         }
 
@@ -628,67 +626,33 @@ namespace HastaneOtomasyonu
             }
         }
 
-     
+
         private void dtpMuayene_ValueChanged(object sender, EventArgs e)
         {
-            
             flpMuayene.Visible = true;
+            flpMuayene.Controls.Clear();
             Button btn;
+            muayeneSaati = new DateTime(dtpMuayene.Value.Year, dtpMuayene.Value.Month, dtpMuayene.Value.Day, 9, 0, 0);
+            int kontrolSaat;
 
-            if (dtpMuayene.Value.Day == DateTime.Now.Day)
+            for (int i = 0; i < 28; i++)
             {
-                // MessageBox.Show("hello");
-                //seçim işlemleri sırayla gittiğinden doktor seçince değil dtp enable olduğunda button oluşturulmalı
-                //valuechanged methodunda yapılmıyor en başta dtp set edildiği için direkt methoda giriyor ayrıca visible işlevlerini bozuyor      
-                //DateTime muayeneSaati = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 22, 0, 0);
-                muayeneSaati = new DateTime(dtpMuayene.Value.Year, dtpMuayene.Value.Month, dtpMuayene.Value.Day, 9, 0, 0);
-                int kontrolSaat;
-                flpMuayene.Controls.Clear();
-                for (int i = 0; i < 28; i++)
+                btn = new Button();
+                btn.Size = new Size(flpMuayene.Size.Width / 5, (flpMuayene.Size.Height - 10) / 8);
+                btn.FlatStyle = FlatStyle.Popup;
+                btn.Text = muayeneSaati.ToShortTimeString();
+                btn.Enabled = true;
+
+                if (muayeneSaati.ToShortTimeString() == "11:45") muayeneSaati = muayeneSaati.AddHours(1);
+
+                if (dtpMuayene.Value.Day == DateTime.Now.Day)
                 {
-                    btn = new Button();
-                    btn.Size = new Size(flpMuayene.Size.Width / 5, (flpMuayene.Size.Height - 10) / 8);
-                    btn.FlatStyle = FlatStyle.Popup;
-                    btn.Text = muayeneSaati.ToShortTimeString();
-
-                    if (muayeneSaati.ToShortTimeString() == "11:45") muayeneSaati = muayeneSaati.AddHours(1);
-
-                    if (dtpMuayene.Value.DayOfYear > DateTime.Now.DayOfYear) btn.Enabled = true;
-                    //if (dtpMuayene.Value.Date.CompareTo(DateTime.Now) > 0) btn.Enabled = true;
-                    //aynı işlemi yapan başka bir method fikir vermesi için bakılabilir
-
-                    else
-                    {
-                        kontrolSaat = TimeSpan.Compare(muayeneSaati.TimeOfDay, DateTime.Now.TimeOfDay);
-                        if (kontrolSaat == -1) btn.Enabled = false;
-                    }
-
-                    muayeneSaati = muayeneSaati.AddMinutes(15);
-
-                    flpMuayene.Controls.Add(btn);
+                    kontrolSaat = TimeSpan.Compare(muayeneSaati.TimeOfDay, DateTime.Now.TimeOfDay);
+                    if (kontrolSaat == -1) btn.Enabled = false;
                 }
-            }
-            else
-            {
-                muayeneSaati = new DateTime(dtpMuayene.Value.Year, dtpMuayene.Value.Month, dtpMuayene.Value.Day, 9, 0, 0);
-                flpMuayene.Visible = true;
-                flpMuayene.Controls.Clear();
-                // MessageBox.Show("gb");
-                for (int i = 0; i < 28; i++)
-                {
-                    btn = new Button();
-                    btn.Size = new Size(flpMuayene.Size.Width / 5, (flpMuayene.Size.Height - 10) / 8);
-                    btn.FlatStyle = FlatStyle.Popup;
-                    btn.Text = muayeneSaati.ToShortTimeString();
+                muayeneSaati = muayeneSaati.AddMinutes(15);
 
-                    if (muayeneSaati.ToShortTimeString() == "11:45") muayeneSaati = muayeneSaati.AddHours(1);
-
-                    btn.Enabled = true;
-                    muayeneSaati = muayeneSaati.AddMinutes(15);
-
-                    flpMuayene.Controls.Add(btn);
-                }
-
+                flpMuayene.Controls.Add(btn);
             }
         }
     }
