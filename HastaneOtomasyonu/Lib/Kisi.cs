@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HastaneOtomasyonu.Lib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,6 +8,11 @@ using System.Threading.Tasks;
 
 namespace HastaneOtomasyonu
 {
+    [System.Xml.Serialization.XmlInclude(typeof(Hasta))]
+    [System.Xml.Serialization.XmlInclude(typeof(Doktor))]
+    [System.Xml.Serialization.XmlInclude(typeof(Hemsire))]
+    [System.Xml.Serialization.XmlInclude(typeof(Personel))]
+
     public abstract class Kisi
     {
         private string _ad, _soyad, _telefon, _email, _tckn;

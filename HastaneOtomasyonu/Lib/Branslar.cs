@@ -10,7 +10,7 @@ namespace HastaneOtomasyonu.Lib
     {
         Kardiyoloji,
         KulakBurunBoğaz,
-        ÇocukDoktoru,
+        Pedagoji,
         Nöroloji,
         Üroloji,
         Hematoloji,

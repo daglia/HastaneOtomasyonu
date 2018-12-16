@@ -8,6 +8,7 @@ namespace HastaneOtomasyonu.Lib
 {
     public class Hasta : Kisi
     {
+        public DateTime _mudahaleSaati;
         public Hasta()
         {
         }

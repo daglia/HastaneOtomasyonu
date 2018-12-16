@@ -1,5 +1,6 @@
 ﻿using HastaneOtomasyonu.Lib;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,6 +33,7 @@ namespace HastaneOtomasyonu
             cbGorev.SelectedIndex = 0;
             cbDoktorSec.Enabled = false;
             cbServisSec.Text = "Servis Seçiniz";
+            dtpMuayene.MinDate = DateTime.Now;
         }
 
         private void toolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -43,7 +45,6 @@ namespace HastaneOtomasyonu
                 gbMuayene.Visible = true;
                 gbMuayeneBilgileri.Visible = true;
                 gbEkBilgiler.Visible = false;
-                //kapattğım yerleri açmayın:D
                 //if (dtpMuayene.Enabled == true)
                 //    flpMuayene.Visible = true;
 
@@ -143,22 +144,112 @@ namespace HastaneOtomasyonu
 
         private void xMLOlarakAktarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            dosyaAc.Title = "Bir XML dosyası seçiniz";
+            dosyaAc.Filter = "(XML Dosyası) | *.xml;";
+            dosyaAc.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            dosyaAc.FileName = "Kisiler.xml";
 
+            if (dosyaAc.ShowDialog() == DialogResult.OK)
+            {
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Kisi>));
+                XmlReader reader = new XmlTextReader(dosyaAc.FileName);
+                if (xmlSerializer.CanDeserialize(reader))
+                {
+                    kisiler = xmlSerializer.Deserialize(reader) as List<Kisi>;
+                    MessageBox.Show($"{kisiler.Count} kişi sisteme başarıyla eklendi.");
+                    FormuTemizle();
+                    ListeGuncelle();
+                }
+                else
+                {
+                    MessageBox.Show("Lütfen bir XML dosyası seçin.");
+                }
+            }
         }
 
         private void jSONOlarakAktarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            dosyaAc.Title = "Bir JSON dosyası seçiniz";
+            dosyaAc.Filter = "(JSON Dosyası) | *.json;";
+            dosyaAc.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            dosyaAc.FileName = "Kisiler.json";
 
+            if (dosyaAc.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    FileStream dosya = File.OpenRead(dosyaAc.FileName);
+                    StreamReader reader = new StreamReader(dosya);
+                    string dosyaIcerigi = reader.ReadToEnd();
+                    reader.Close();
+                    dosya.Close();
+
+                    var ja = JArray.Parse(dosyaIcerigi);
+
+                    foreach (JObject jo in ja)
+                    {
+                        if(jo.Property("$type").ToString() == "\"$type\": \"HastaneOtomasyonu.Lib.Hasta, HastaneOtomasyonu\"")
+                            kisiler.Add(jo.ToObject<Hasta>());
+                        else if (jo.Property("$type").ToString() == "\"$type\": \"HastaneOtomasyonu.Lib.Doktor, HastaneOtomasyonu\"")
+                            kisiler.Add(jo.ToObject<Doktor>());
+                        else if (jo.Property("$type").ToString() == "\"$type\": \"HastaneOtomasyonu.Lib.Hemsire, HastaneOtomasyonu\"")
+                            kisiler.Add(jo.ToObject<Hemsire>());
+                        else if (jo.Property("$type").ToString() == "\"$type\": \"HastaneOtomasyonu.Lib.Personel, HastaneOtomasyonu\"")
+                            kisiler.Add(jo.ToObject<Personel>());
+                    }
+
+                    MessageBox.Show($"{kisiler.Count} kişi sisteme başarıyla eklendi.");
+                    FormuTemizle();
+                    ListeGuncelle();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
         }
 
         private void xMLOlarakAktarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            dosyaKaydet.Title = "XML olarak kaydet";
+            dosyaKaydet.Filter = "(XML Dosyası) | *.xml;";
+            dosyaKaydet.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            dosyaKaydet.FileName = "Kisiler.xml";
 
+            if (dosyaKaydet.ShowDialog() == DialogResult.OK)
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(List<Kisi>));
+                TextWriter textWriter = new StreamWriter(dosyaKaydet.FileName);
+                serializer.Serialize(textWriter, kisiler); //Kisi class'ı public olmalı
+                textWriter.Close();
+                textWriter.Dispose();
+                MessageBox.Show($"XML başarıyla dışa aktarıldı: {dosyaKaydet.FileName}");
+            }
         }
 
         private void jSONOlarakAktarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            dosyaKaydet.Title = "JSON olarak kaydet";
+            dosyaKaydet.Filter = "(JSON Dosyası) | *.json;";
+            dosyaKaydet.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            dosyaKaydet.FileName = "Kisiler.json";
 
+            var settings = new JsonSerializerSettings()
+            {
+                TypeNameHandling = TypeNameHandling.Auto
+            };
+
+            if (dosyaKaydet.ShowDialog() == DialogResult.OK)
+            {
+                FileStream file = File.Open(dosyaKaydet.FileName, FileMode.OpenOrCreate);
+                StreamWriter writer = new StreamWriter(file);
+
+                writer.Write(JsonConvert.SerializeObject(kisiler, settings));
+                writer.Close();
+                writer.Dispose();
+                MessageBox.Show($"JSON başarıyla dışa aktarıldı: {dosyaKaydet.FileName}");
+            }
         }
 
         Kisi yeniKisi;
@@ -213,6 +304,25 @@ namespace HastaneOtomasyonu
                 yeniKisi.Telefon = txtTelefon.Text;
                 yeniKisi.TCKN = txtTCKN.Text;
 
+                if (yeniKisi is Doktor doktor)
+                {
+                    doktor.SaatlikUcret = decimal.Parse(txtSaatlikUcret.Text);
+                    doktor.DBrans = (Branslar)cbBrans.SelectedItem;
+                }
+
+                else if (yeniKisi is Hemsire hemsire)
+                {
+                    hemsire.SaatlikUcret = decimal.Parse(txtSaatlikUcret.Text);
+                    hemsire.HBrans = (Branslar)cbBrans.SelectedItem;
+                }
+                    
+                else if (yeniKisi is Personel personel)
+                {
+                    personel.SaatlikUcret = decimal.Parse(txtSaatlikUcret.Text);
+                    personel.CGorev = (Gorevler)cbBrans.SelectedItem;
+                }
+                    
+
                 foreach (Kisi kisi in kisiler)
                 {
                     if (yeniKisi.TCKN == kisi.TCKN)
@@ -230,7 +340,7 @@ namespace HastaneOtomasyonu
             }
         }
 
-        private void btnHastaGuncelle_Click(object sender, EventArgs e)
+        private void btnGuncelle_Click(object sender, EventArgs e)
         {
             if (lstKisiler.SelectedItem == null) return;
 
@@ -243,6 +353,29 @@ namespace HastaneOtomasyonu
                 seciliKisi.TCKN = txtTCKN.Text;
                 seciliKisi.Telefon = txtTelefon.Text;
                 seciliKisi.email = txtMail.Text;
+
+                if(seciliKisi is Hasta hasta)
+                {
+                    //Muayene saati ve doktoru ile ilgili bir şeyler
+                }
+
+                else if (seciliKisi is Doktor doktor)
+                {
+                    doktor.SaatlikUcret = decimal.Parse(txtSaatlikUcret.Text);
+                    doktor.DBrans = (Branslar)cbBrans.SelectedItem;
+                }
+
+                else if (seciliKisi is Hemsire hemsire)
+                {
+                    hemsire.SaatlikUcret = decimal.Parse(txtSaatlikUcret.Text);
+                    hemsire.HBrans = (Branslar)cbBrans.SelectedItem;
+                }
+
+                else if (seciliKisi is Personel personel)
+                {
+                    personel.SaatlikUcret = decimal.Parse(txtSaatlikUcret.Text);
+                    personel.CGorev = (Gorevler)cbBrans.SelectedItem;
+                }
             }
             catch (Exception ex)
             {
@@ -261,7 +394,7 @@ namespace HastaneOtomasyonu
             kisiler.Remove(seciliKisi);
 
             FormuTemizle();
-            lstKisiler.Items.AddRange(kisiler.ToArray());
+            ListeGuncelle();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -418,6 +551,8 @@ namespace HastaneOtomasyonu
 
         private void cbServisSec_SelectedIndexChanged(object sender, EventArgs e)
         {
+            cbDoktorSec.Text = "Doktor Seçiniz";
+            cbHemsireSec.Text = "Hemşire Seçiniz";
             cbDoktorSec.Items.Clear();
             cbDoktorSec.Enabled = true;
 
@@ -454,29 +589,38 @@ namespace HastaneOtomasyonu
             txtTelefon.Text = seciliKisi.Telefon;
             txtTCKN.Text = seciliKisi.TCKN;
 
+            cbGorev.SelectedIndex = -1;
+
             if (seciliKisi is Hasta hasta)
             {
-
+                cbServisSec.Enabled = true;
             }
             else if (seciliKisi is Doktor doktor)
             {
                 cbGorev.SelectedIndex = 0;
-                cbBrans.SelectedItem = (Enum)doktor.DBrans;
-                //txtSaatlikUcret.Text = doktor.SaatlikUcret.ToString();
+                cbBrans.SelectedItem = doktor.DBrans;
+                txtSaatlikUcret.Text = doktor.SaatlikUcret.ToString();
+                txtMaas.Text = doktor.Tutar.ToString();
+                cbBrans.SelectedItem = doktor.DBrans;
             }
             else if (seciliKisi is Hemsire hemsire)
             {
                 cbGorev.SelectedIndex = 1;
-                cbBrans.SelectedItem = (Enum)hemsire.HBrans;
-
+                cbBrans.SelectedItem = hemsire.HBrans;
+                txtSaatlikUcret.Text = hemsire.SaatlikUcret.ToString();
+                txtMaas.Text = hemsire.Tutar.ToString();
+                cbBrans.SelectedItem = hemsire.HBrans;
             }
             else if (seciliKisi is Personel personel)
             {
                 cbGorev.SelectedIndex = 2;
-                cbBrans.SelectedItem = (Enum)personel.CGorev;
+                cbBrans.SelectedItem = personel.CGorev;
+                txtSaatlikUcret.Text = personel.SaatlikUcret.ToString();
+                txtMaas.Text = personel.Tutar.ToString();
             }
         }
 
+        DateTime muayeneSaati;
         private void dtpMuayene_ValueChanged(object sender, EventArgs e)
         {
             flpMuayene.Visible = true;
@@ -484,7 +628,7 @@ namespace HastaneOtomasyonu
 
             if (dtpMuayene.Value.Day == DateTime.Now.Day)
             {
-                MessageBox.Show("hello");
+                // MessageBox.Show("hello");
                 //seçim işlemleri sırayla gittiğinden doktor seçince değil dtp enable olduğunda button oluşturulmalı
                 //valuechanged methodunda yapılmıyor en başta dtp set edildiği için direkt methoda giriyor ayrıca visible işlevlerini bozuyor      
                 //DateTime muayeneSaati = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 22, 0, 0);
@@ -517,9 +661,10 @@ namespace HastaneOtomasyonu
             }
             else
             {
+                muayeneSaati = new DateTime(dtpMuayene.Value.Year, dtpMuayene.Value.Month, dtpMuayene.Value.Day, 9, 0, 0);
                 flpMuayene.Visible = true;
                 flpMuayene.Controls.Clear();
-                MessageBox.Show("gb");
+                // MessageBox.Show("gb");
                 for (int i = 0; i < 28; i++)
                 {
                     btn = new Button();
@@ -536,10 +681,6 @@ namespace HastaneOtomasyonu
                 }
 
             }
-            //datetimepicker enable içinde doğru çalışmıyordu.
-            /*private void dtpMuayene_EnabledChanged(object sender, EventArgs e)
-            {
-            }*/
         }
     }
 }

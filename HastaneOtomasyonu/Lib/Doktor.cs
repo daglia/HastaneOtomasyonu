@@ -10,6 +10,8 @@ namespace HastaneOtomasyonu.Lib
     {
         public Branslar DBrans { get; set; }
         public List<Hemsire> Hemsireler { get; set; } = new List<Hemsire>();
+        public List<Hasta> Hastalar { get; set; } = new List<Hasta>();
+        public List<DateTime> MudahaleSaati { get; set; } = new List<DateTime>();
 
         public Doktor() { }
 
@@ -19,6 +21,9 @@ namespace HastaneOtomasyonu.Lib
             Hemsire hemsire = new Hemsire();
             hemsire.HBrans = doktor.DBrans;
             Hemsireler.Add(hemsire);
+            hasta._mudahaleSaati = mudahaleSaati;
+            Hastalar.Add(hasta);
+            MudahaleSaati.Add(mudahaleSaati);
         }
 
         public override string ToString()
