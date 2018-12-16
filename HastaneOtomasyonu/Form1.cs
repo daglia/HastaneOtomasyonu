@@ -26,9 +26,12 @@ namespace HastaneOtomasyonu
         List<Kisi> kisiler = new List<Kisi>();
         List<Kisi> aramalar = new List<Kisi>();
         List<Button> Butonlar = new List<Button>();
+        
 
         private void Form1_Load(object sender, EventArgs e)
         {
+           
+            flpMuayene.Visible = false;
             toolStripComboBox1.SelectedIndex = 0;
             cbGorev.SelectedIndex = 0;
             cbDoktorSec.Enabled = false;
@@ -41,7 +44,7 @@ namespace HastaneOtomasyonu
             if (toolStripComboBox1.SelectedIndex == 0)
             {
                 //Visible işlemleri
-
+                flpMuayene.Visible = false;
                 gbMuayene.Visible = true;
                 gbMuayeneBilgileri.Visible = true;
                 gbEkBilgiler.Visible = false;
@@ -555,6 +558,7 @@ namespace HastaneOtomasyonu
             cbHemsireSec.Text = "Hemşire Seçiniz";
             cbDoktorSec.Items.Clear();
             cbDoktorSec.Enabled = true;
+            flpMuayene.Enabled = false;
 
             foreach (Kisi kisi in kisiler)
                 if (kisi is Doktor doktor && cbServisSec.SelectedIndex == (int)doktor.DBrans)
@@ -564,6 +568,9 @@ namespace HastaneOtomasyonu
         private void cbHemsireSec_SelectedIndexChanged(object sender, EventArgs e)
         {
             dtpMuayene.Enabled = true;
+            flpMuayene.Enabled = true;
+            
+            flpMuayene.Visible = true;
         }
 
         private void cbDoktorSec_SelectedIndexChanged(object sender, EventArgs e)
@@ -623,6 +630,7 @@ namespace HastaneOtomasyonu
      
         private void dtpMuayene_ValueChanged(object sender, EventArgs e)
         {
+            
             flpMuayene.Visible = true;
             Button btn;
 
