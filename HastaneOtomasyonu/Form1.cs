@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -583,7 +584,7 @@ namespace HastaneOtomasyonu
                     cbHemsireSec.Items.Add(hemsire);
 
         }
-        DateTime muayeneSaati;
+        
         private void lstKisiler_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lstKisiler.SelectedItem == null) return;
@@ -626,12 +627,13 @@ namespace HastaneOtomasyonu
             }
         }
 
-
+        Button btn;
+        DateTime muayeneSaati;
         private void dtpMuayene_ValueChanged(object sender, EventArgs e)
         {
             flpMuayene.Visible = true;
             flpMuayene.Controls.Clear();
-            Button btn;
+            //Button btn;
             muayeneSaati = new DateTime(dtpMuayene.Value.Year, dtpMuayene.Value.Month, dtpMuayene.Value.Day, 9, 0, 0);
             int kontrolSaat;
 
@@ -653,7 +655,45 @@ namespace HastaneOtomasyonu
                 muayeneSaati = muayeneSaati.AddMinutes(15);
 
                 flpMuayene.Controls.Add(btn);
-            }
+
+                btn.Click += new EventHandler(btn_Click);
+            } 
         }
+
+        private void btn_Click(object sender, EventArgs e) {
+            Doktor doktor = new Doktor();
+            CultureInfo cultureInfo = new CultureInfo("tr-TR");
+            //doktor.MudahaleSaati = DateTime.ParseExact(btn.Text,"yyyy/mm/dd","en);
+            MessageBox.Show($"Randevu almak istediğiniz:\nBölüm: {cbServisSec.SelectedItem}\nDoktor: {cbDoktorSec.SelectedItem}\nHemşire: {cbHemsireSec.SelectedItem}\nTarih: {dtpMuayene.Value.ToShortDateString()},{btn.Text}", "Randevu Bilgileri");
+            //btn.text en son 16:45te kaldığı için direkt onu gösteriyor belki bir boolean değişken ile halledilebilir
+
+
+            //string promptvalue = ShowDialog($"Randevu almak istediğiniz:\nBölüm: {cbServisSec.SelectedItem}\nDoktor: {cbDoktorSec.SelectedItem}\nHemşire: {cbHemsireSec.SelectedItem}\nTarih: {dtpMuayene.Value.ToShortDateString()},{btn.Text}","Randevu Bilgileri");
+
+        }
+
+        //kendi showdialog'umuzu olşturmak için aşağıdaki methoddan yararlanabiliriz ancak mesajı düzgün görüntülemiyor
+        //public string ShowDialog(string text, string caption)
+        //{
+        //    Form prompt = new Form()
+        //    {
+        //        Width = 500,
+        //        Height = 150,
+        //        FormBorderStyle = FormBorderStyle.FixedDialog,
+        //        Text = caption,
+        //        StartPosition = FormStartPosition.CenterScreen
+        //    };
+        //    Label textLabel = new Label() { Left = 50, Top = 20, Text = text };
+        //    //TextBox textBox = new TextBox() { Left = 50, Top = 50, Width = 400 };
+        //    Button confirmation = new Button() { Text = "Ok", Left = 350, Width = 100, Top = 70, DialogResult = DialogResult.OK };
+        //    confirmation.Click += (sender, e) => { prompt.Close(); };
+        //    //prompt.Controls.Add(textBox);
+        //    prompt.Controls.Add(confirmation);
+        //    prompt.Controls.Add(textLabel);
+        //    prompt.AcceptButton = confirmation;
+        //    textLabel.Text = text;
+        //    return prompt.ShowDialog() == DialogResult.OK ? textLabel.Text : "";
+        //}
+
     }
 }
