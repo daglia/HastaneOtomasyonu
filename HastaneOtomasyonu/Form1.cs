@@ -30,7 +30,7 @@ namespace HastaneOtomasyonu
 
         private void Form1_Load(object sender, EventArgs e)
         {
-           
+            
             flpMuayene.Visible = false;
             toolStripComboBox1.SelectedIndex = 0;
             cbGorev.SelectedIndex = 0;
@@ -559,6 +559,7 @@ namespace HastaneOtomasyonu
             cbDoktorSec.Items.Clear();
             cbDoktorSec.Enabled = true;
             flpMuayene.Enabled = false;
+            flpMuayene.Visible = false;
 
             foreach (Kisi kisi in kisiler)
                 if (kisi is Doktor doktor && cbServisSec.SelectedIndex == (int)doktor.DBrans)
