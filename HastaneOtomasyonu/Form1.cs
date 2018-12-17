@@ -32,7 +32,7 @@ namespace HastaneOtomasyonu
         private void Form1_Load(object sender, EventArgs e)
         {
             flpMuayene.Visible = false;
-            toolStripComboBox1.SelectedIndex = 0;
+            toolStripComboBox1.SelectedIndex = 1;
             cbGorev.SelectedIndex = 0;
             cbDoktorSec.Enabled = false;
             cbServisSec.Text = "Servis Seçiniz";
@@ -670,6 +670,12 @@ namespace HastaneOtomasyonu
 
             //string promptvalue = ShowDialog($"Randevu almak istediğiniz:\nBölüm: {cbServisSec.SelectedItem}\nDoktor: {cbDoktorSec.SelectedItem}\nHemşire: {cbHemsireSec.SelectedItem}\nTarih: {dtpMuayene.Value.ToShortDateString()},{btn.Text}","Randevu Bilgileri");
 
+        }
+
+        private void cbHemsireDoktor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Doktor doktor=(Doktor)cbHemsireDoktor.SelectedItem;
+            cbBrans.SelectedItem=doktor.DBrans;
         }
 
         //kendi showdialog'umuzu olşturmak için aşağıdaki methoddan yararlanabiliriz ancak mesajı düzgün görüntülemiyor
